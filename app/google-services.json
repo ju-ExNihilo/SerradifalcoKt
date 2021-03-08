@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "848439431991",
+    "project_id": "serradifalco-e4400",
+    "storage_bucket": "serradifalco-e4400.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848439431991:android:292e47d6b9cfe6eb5300b2",
+        "android_client_info": {
+          "package_name": "com.jgdeveloppement.pizza_serradifalco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848439431991-7sjlvhi0u8ilnajd81nd681vsb8j1jsi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jgdeveloppement.pizza_serradifalco",
+            "certificate_hash": "2e6eefb7d06a9b355ad6e5f83f64911f24e28602"
+          }
+        },
+        {
+          "client_id": "848439431991-1nvl7qc8l7hd1jg5etpq9uljqmi6i4e0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9It5N_meA3wKjdPxzpPBJArrwze11K3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848439431991-1nvl7qc8l7hd1jg5etpq9uljqmi6i4e0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

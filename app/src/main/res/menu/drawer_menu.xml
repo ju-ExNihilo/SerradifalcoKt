@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/accueil"
+            android:enabled="true"
+            android:icon="@drawable/store"
+            android:title="Accueil"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/menu"
+            android:enabled="true"
+            android:icon="@drawable/pizza"
+            android:title="Menu"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/pizzeria"
+            android:enabled="true"
+            android:icon="@drawable/restaurant"
+            android:title="Pizzeria"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/logout"
+            android:enabled="true"
+            android:icon="@drawable/login"
+            android:title="Déconnexion"
+            app:showAsAction="ifRoom" />
+
+</menu>
