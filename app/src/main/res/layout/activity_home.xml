@@ -39,6 +39,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,13 +48,13 @@
                 app:itemTextColor="@color/drawer_item"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@color/grayTransparent" android:id="@+id/bottomNavigationView"/>
+                android:background="@color/grayTransparent"/>
 
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+    <!-- NavigationView -->
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="match_parent"

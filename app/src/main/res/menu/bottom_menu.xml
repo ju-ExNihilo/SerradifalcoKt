@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/homeFragment"
+            android:id="@+id/homeFragment2"
             android:enabled="true"
             android:icon="@drawable/store"
-            android:title="Accueil"
+            android:title="@string/home_for_menu"
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/map"
+            android:id="@+id/mapFragment"
             android:enabled="true"
             android:icon="@drawable/place"
-            android:title="Nous Trouver"
+            android:title="@string/found_us_for_menu"
             app:showAsAction="ifRoom" />
 
     <item
-            android:id="@+id/menuActivity"
+            android:id="@+id/menuFragment"
             android:enabled="true"
             android:icon="@drawable/pizza"
-            android:title="Menu"
+            android:title="@string/menu_for_menu"
             app:showAsAction="ifRoom" />
 
     <item
             android:id="@+id/call"
             android:enabled="true"
             android:icon="@drawable/phone"
-            android:title="Nous Appeler"
+            android:title="@string/call_us_for_menu"
             app:showAsAction="ifRoom" />
 
 

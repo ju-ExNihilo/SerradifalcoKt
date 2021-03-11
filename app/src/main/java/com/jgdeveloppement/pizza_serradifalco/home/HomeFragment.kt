@@ -2,6 +2,7 @@ package com.jgdeveloppement.pizza_serradifalco.home
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.jgdeveloppement.pizza_serradifalco.models.Settings
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
+import com.jgdeveloppement.pizza_serradifalco.utils.UserData
 
 class HomeFragment : Fragment() {
 
@@ -44,6 +46,7 @@ class HomeFragment : Fragment() {
         initCardMenu()
         initPizzaDay()
         testUser()
+        Log.i("DEBUGGG", "firstname : ${UserData.userFirstName} lastname : ${UserData.userLastName} userId : ${UserData.userId} phone : ${UserData.userPhone}")
     }
 
     private fun setupViewModel() {

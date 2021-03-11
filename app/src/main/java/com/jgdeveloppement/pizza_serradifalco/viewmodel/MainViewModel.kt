@@ -10,30 +10,11 @@ import kotlinx.coroutines.Dispatchers
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    fun getSettings() = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = mainRepository.getSettings()))
-        }catch (exception: Exception){
-            emit(Resource.error(data = null, message = exception.message?: "Error Occurred!"))
-        }
-    }
+    fun getSettings() = mainRepository.getSettings()
 
-    fun getPizzaDay() = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = mainRepository.getPizzaDay()))
-        }catch (exception: Exception){
-            emit(Resource.error(data = null, message = exception.message?: "Error Occurred!"))
-        }
-    }
+    fun getPizzaDay() = mainRepository.getPizzaDay()
 
-    fun getUser(email: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = mainRepository.getUser(email)))
-        }catch (exception: Exception){
-            emit(Resource.error(data = null, message = exception.message?: "Error Occurred!"))
-        }
-    }
+    fun getUser(email: String) = mainRepository.getUser(email)
+
+    fun createUser(user: HashMap<String, String>) = mainRepository.createUser(user)
 }

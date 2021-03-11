@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/shopping"
-                android:title="Shopping"
+                android:title="@string/shopping_for_menu"
                 android:actionLayout="@layout/menu_action_item_badge"
                 app:showAsAction="always"/>
     </group>

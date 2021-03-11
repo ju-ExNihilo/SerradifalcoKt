@@ -11,20 +11,23 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityHomeBinding
 import com.jgdeveloppement.pizza_serradifalco.login.LoginActivity
 import com.mikepenz.actionitembadge.library.ActionItemBadge
 import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityHomeBinding
     private var navController: NavController? = null
+    private var navOptions: NavOptions? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +37,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         setSupportActionBar(binding.toolbar)
         configureDrawerLayout()
-        binding.navView.setNavigationItemSelectedListener(this)
+        binding.navView.setupWithNavController(navController!!)
+        binding.bottomNavigationView.setupWithNavController(navController!!)
+        configureNavigation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -44,27 +49,34 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return super.onCreateOptionsMenu(menu)
     }
 
-    // 2 - Configure Drawer Layout
+    override fun onBackPressed() {
+        if (binding.layoutDrawer.isDrawerOpen(GravityCompat.START)) binding.layoutDrawer.closeDrawer(GravityCompat.START) else super.onBackPressed()
+    }
+
+    //  Configure Drawer Layout
     private fun configureDrawerLayout() {
         val toggle = ActionBarDrawerToggle(this, binding.layoutDrawer, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         binding.layoutDrawer.addDrawerListener(toggle)
         toggle.syncState()
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.accueil -> Log.i("DEBUGGG", "accueil")
-            R.id.menu -> Log.i("DEBUGGG", "menu")
-            R.id.pizzeria -> Log.i("DEBUGGG", "pizzeria")
-            R.id.logout -> {
-                AuthUI.getInstance()
-                    .signOut(this)
-                    .addOnSuccessListener { finish(); LoginActivity.navigate(this) }
 
-            }
+
+    //  Configure Bottom navigation
+    private fun configureNavigation(){
+        val logout = binding.navView.menu.findItem(R.id.logout)
+        logout.setOnMenuItemClickListener {
+            AuthUI.getInstance()
+                .signOut(this)
+                .addOnSuccessListener { finish(); LoginActivity.navigate(this) }
+            true
         }
-        binding.layoutDrawer.closeDrawer(GravityCompat.START)
-        return true
+
+        val call = binding.bottomNavigationView.menu.findItem(R.id.call)
+        call.setOnMenuItemClickListener {
+            Log.i("DEBUGGG", "Start call Intent")
+            true
+        }
     }
 
 

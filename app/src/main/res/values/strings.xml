@@ -1,11 +1,37 @@
 <resources>
     <string name="app_name">Pizza-Serradifalco</string>
+
+    <!-- Login String -->
+    <string name="pizza_au_feu_de_bois">Pizza Au Feu De Bois</string>
+    <string name="connexion_par_email">Connexion par Email</string>
+    <string name="connexion_avec_google">Connexion avec Google</string>
+    <!-- Login String End -->
+
+    <!-- Home String -->
+    <string name="pizza_du_moment">Pizza du moment</string>
+    <string name="a_le_plaisir_de_vous_annoncer">A le plaisir de vous annoncer</string>
+    <string name="leonardo_pizza">LEONARDO PIZZA</string>
+    <string name="by">by</string>
+    <string name="nos_pizzas">Nos Pizzas</string>
+    <!-- Home String End -->
+
+    <!-- Utils String -->
     <string name="error_unknown_error">Une erreur est apparue</string>
     <string name="error_no_internet">internet est requis</string>
     <string name="error_authentication_canceled">L\'authentification à était annulé</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
+    <!-- Utils String End -->
+
+    <!-- Menu String -->
+    <string name="home_for_menu">Accueil</string>
+    <string name="menu_for_menu">Menu</string>
+    <string name="pizzeria_for_menu">Pizzeria</string>
+    <string name="account_for_menu">Mon Compte</string>
+    <string name="logout_for_menu">Déconnexion</string>
+    <string name="shopping_for_menu">Shopping</string>
+    <string name="found_us_for_menu">Nous Trouver</string>
+    <string name="call_us_for_menu">Nous Appeler</string>
+    <!-- Menu String End -->
+
 </resources>
