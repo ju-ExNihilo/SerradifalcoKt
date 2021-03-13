@@ -16,7 +16,10 @@ interface ApiService{
     suspend fun getPizzaDay(@Query("action")action : String, @Query("type") type : String): Product
 
     @GET("/index.php")
-    suspend fun getPizzaTomato(@Query("action")action : String, @Query("type") type : String): List<Product>
+    suspend fun getPizzaById(@Query("action")action : String, @Query("type") type : String, @Query("id") id : Int): Product
+
+    @GET("/index.php")
+    suspend fun getProductList(@Query("action")action : String, @Query("type") type : String): List<Product>
 
 
     // User

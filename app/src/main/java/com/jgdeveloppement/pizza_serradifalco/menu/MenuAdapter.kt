@@ -10,7 +10,14 @@ import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
 import com.jgdeveloppement.pizza_serradifalco.models.Product
 
-class MenuAdapter(private val context: HomeActivity, private val productList: List<Product>): RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+class MenuAdapter(private val context: HomeActivity,
+                  private val productList: List<Product>,
+                  private val onProductShoppingClicked: OnProductShoppingClicked)
+    : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+
+    interface OnProductShoppingClicked{
+        fun onClickedProductShop(productId: Int)
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,10 +28,40 @@ class MenuAdapter(private val context: HomeActivity, private val productList: Li
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentProduct = productList[position]
 
+        when(currentProduct.category) {
+            "PREMIUM" -> {
+                holder.itemName.setTextColor(context.getColor(R.color.colorGreen))
+                holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorGreen))
+                holder.itemLargePrice.setTextColor(context.getColor(R.color.colorGreen))
+                holder.addButton.setImageResource(R.drawable.ic_shopping_premium)
+            }
+            "BLANCHE" -> {
+                holder.itemName.setTextColor(context.getColor(R.color.colorBlanche))
+                holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorBlanche))
+                holder.itemLargePrice.setTextColor(context.getColor(R.color.colorBlanche))
+                holder.addButton.setImageResource(R.drawable.ic_shopping_blanche)
+            }
+            "TOMATE" -> {
+                holder.itemName.setTextColor(context.getColor(R.color.colorTomate))
+                holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorTomate))
+                holder.itemLargePrice.setTextColor(context.getColor(R.color.colorTomate))
+                holder.addButton.setImageResource(R.drawable.ic_shopping_tomato)
+            }
+            "DESSERT" -> {
+                holder.itemName.setTextColor(context.getColor(R.color.colorDessert))
+                holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorDessert))
+                holder.itemLargePrice.setTextColor(context.getColor(R.color.colorDessert))
+                holder.addButton.setImageResource(R.drawable.ic_shopping_dessert)
+
+            }
+        }
+
         holder.itemName.text = currentProduct.name
         holder.itemComponent.text = currentProduct.component
         holder.itemMiddlePrice.text = currentProduct.mediumPrice.toString() + " $"
         holder.itemLargePrice.text = currentProduct.largePrice.toString() + " $"
+
+        holder.addButton.setOnClickListener { onProductShoppingClicked.onClickedProductShop(currentProduct.id) }
     }
 
     override fun getItemCount(): Int = productList.size

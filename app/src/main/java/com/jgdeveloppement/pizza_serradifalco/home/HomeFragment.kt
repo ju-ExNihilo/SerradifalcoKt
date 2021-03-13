@@ -9,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.addUser.AddUserActivity
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
 
@@ -24,11 +28,12 @@ import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var mainViewModel: MainViewModel
+    private var navController: NavController? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -42,6 +47,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
         setupViewModel()
         initCardMenu()
         initPizzaDay()
@@ -125,13 +131,28 @@ class HomeFragment : Fragment() {
         Glide.with(this).load(Uri.parse(pizzaDay.urlPic)).into(binding.homePizzaDayImage)
         binding.homePizzaDayName.text = pizzaDay.name
         binding.homePizzaDayComponent.text = pizzaDay.component
+        binding.homePizzaDay.setOnClickListener { navigateToPizzaDay(pizzaDay.id) }
+        binding.homePizzaDayArrow.setOnClickListener { navigateToPizzaDay(pizzaDay.id) }
+    }
 
+    private fun navigateToPizzaDay(pizzaId: Int){
+        val navOptions: NavOptions = NavOptions.Builder().setPopUpTo(R.id.detailsFragment, true).build()
+        val bundle = Bundle()
+        bundle.putInt("productId", pizzaId)
+        navController?.navigate(R.id.detailsFragment, bundle, navOptions)
     }
 
     private fun initMenuCard(setting: Settings){
         val menuCardList = listOf(HomeMenuCard("Premium", setting.premiumUrl), HomeMenuCard("Tomate", setting.tomatoUrl),
                 HomeMenuCard("Blanche", setting.blancheUrl),HomeMenuCard("Dessert", setting.dessert1Url))
-        binding.homeRecyclerView.adapter = MenuCardAdapter(context as HomeActivity, menuCardList)
+        binding.homeRecyclerView.adapter = MenuCardAdapter(context as HomeActivity, menuCardList, this)
+    }
+
+    override fun onClickedCardMenu(cardName: String) {
+        val navOptions: NavOptions = NavOptions.Builder().setPopUpTo(R.id.menuFragment, true).build()
+        val bundle = Bundle()
+        bundle.putString("cardName", cardName)
+        navController?.navigate(R.id.menuFragment, bundle, navOptions)
     }
 
 }

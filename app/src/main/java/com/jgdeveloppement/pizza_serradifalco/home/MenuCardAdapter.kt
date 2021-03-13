@@ -1,7 +1,5 @@
 package com.jgdeveloppement.pizza_serradifalco.home
 
-import android.content.Context
-import android.content.res.ColorStateList
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,14 @@ import com.bumptech.glide.Glide
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.models.HomeMenuCard
 
-class MenuCardAdapter(private val context: HomeActivity, private val cardMenuList: List<HomeMenuCard>): RecyclerView.Adapter<MenuCardAdapter.ViewHolder>() {
+class MenuCardAdapter(private val context: HomeActivity,
+                      private val cardMenuList: List<HomeMenuCard>,
+                      private val onCardMenuClicked: OnCardMenuClicked)
+    : RecyclerView.Adapter<MenuCardAdapter.ViewHolder>() {
+
+    interface OnCardMenuClicked{
+        fun onClickedCardMenu(cardName: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.pizza_item, parent, false)
@@ -44,6 +49,8 @@ class MenuCardAdapter(private val context: HomeActivity, private val cardMenuLis
                 holder.cardNameItem.background = context.getDrawable(R.drawable.underline_small_white)
             }
         }
+
+        holder.itemView.setOnClickListener { onCardMenuClicked.onClickedCardMenu(currentCard.name) }
 
     }
 

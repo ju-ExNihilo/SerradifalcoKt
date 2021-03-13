@@ -5,5 +5,7 @@ import com.jgdeveloppement.pizza_serradifalco.repository.ProductRepository
 
 class ProductViewModel(private val productRepository: ProductRepository) : ViewModel() {
 
-    fun getPizzaTomatoList() = productRepository.getPizzaTomatoList()
+    fun getProductList(type: String) = productRepository.getProductList(type)
+
+    fun getPizzaById(id: Int) = productRepository.getPizzaById(id)
 }

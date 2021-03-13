@@ -8,7 +8,8 @@ class ApiHelper(private val apiService: ApiService) {
 
     // Pizza
     suspend fun getPizzaDay() = apiService.getPizzaDay("api","PizzaDay")
-    suspend fun getPizzaTomato() = apiService.getPizzaTomato("api","Tomate")
+    suspend fun getPizzaById(id: Int) = apiService.getPizzaById("api","OneProduct", id)
+    suspend fun getProductList(type: String) = apiService.getProductList("api", type)
 
     // User
     suspend fun getUser(email: String) = apiService.getUser("api","User", email)
