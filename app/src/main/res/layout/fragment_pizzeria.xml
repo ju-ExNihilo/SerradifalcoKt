@@ -10,7 +10,7 @@
 
     <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -18,51 +18,60 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@+id/drop_card"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:cardBackgroundColor="@color/colorTransparent"
-                    app:cardElevation="20dp"
-                    style="@style/ShapeAppearanceOverlay_card_custom_top_corners"
-                    app:cardCornerRadius="30dp"
-                    android:alpha="0.9">
-                <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        app:srcCompat="@drawable/building"
-                        android:id="@+id/imageView2"
-                        android:adjustViewBounds="true"
-                        android:cropToPadding="true"
-                        android:scaleType="fitXY"
-                        android:baselineAlignBottom="true"
-                        android:foregroundGravity="top"
-                        android:padding="0dp"/>
-            </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent">
 
             <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drop_card"
+                    android:id="@+id/pizzeria_default_card"
                     style="@style/CustomTopCardViewStyle"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_width="0dp"
-                    android:layout_height="700dp"
-                    app:cardElevation="16dp"
-                    android:layout_marginTop="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:background="@drawable/login_pic"
-                    android:padding="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="950dp"
+                    app:cardElevation="@dimen/default_card_elevation"
+                    android:layout_marginTop="@dimen/default_card_margin_top"
                     app:cardBackgroundColor="@color/grayTransparent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
+                    <ImageView
+                            android:id="@+id/pizzeria_default_card_pizza_image"
+                            android:src="@drawable/back4"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/default_card_pizza_image_height"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:scaleType="fitXY"/>
+
+                    <ImageView
+                            android:id="@+id/pizzeria_default_card_name_image"
+                            android:src="@drawable/logo6"
+                            android:layout_width="@dimen/default_card_name_image_width"
+                            android:layout_height="@dimen/default_card_name_image_height"
+                            app:layout_constraintTop_toTopOf="@+id/pizzeria_default_card_pizza_image"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="@dimen/default_card_name_image_margin_top"/>
+
+                    <com.prush.typedtextview.TypedTextView
+                            android:id="@+id/typedTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="start"
+                            android:textSize="@dimen/typed_text_size"
+                            app:typed_text="@string/pizzeria_text"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/pizzeria_default_card_pizza_image"
+                            android:layout_marginTop="@dimen/typed_text_margin_top"
+                            android:textColor="@color/colorWhite"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:typing_speed="100"
+                            app:sentence_pause="200"
+                            android:layout_marginBottom="@dimen/typed_text_margin_bottom"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

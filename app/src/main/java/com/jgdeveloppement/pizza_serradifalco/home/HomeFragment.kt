@@ -95,13 +95,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun testUser(){
-        FirebaseAuth.getInstance().currentUser?.email?.let {
+        FirebaseAuth.getInstance().currentUser?.email?.let { it ->
             mainViewModel.getUser(it).observe(viewLifecycleOwner, {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
                             binding.homeProgressLayout.visibility = View.GONE
-                            resource.data?.let { user -> Toast.makeText(context, user.email, Toast.LENGTH_LONG).show() }
+                            resource.data?.let { user ->
+                                UserData.userFirstName = user.firstName
+                                UserData.userLastName = user.lastName
+                                UserData.userId = user.id
+                                UserData.userPhone = user.phone
+                            }
                         }
                         Status.ERROR -> {
                             binding.homeProgressLayout.visibility = View.GONE

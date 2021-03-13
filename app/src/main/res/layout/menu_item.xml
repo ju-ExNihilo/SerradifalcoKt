@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTransparent">
+
+
+    <TextView
+            android:id="@+id/menu_item_name"
+            tools:text="Tartufi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorGreen"/>
+
+    <TextView
+            android:id="@+id/menu_item_component"
+            tools:text="Tomate san Marzano dop , straciatella, basilic frais, huile d’olive nere "
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/menu_item_name"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="italic"
+            android:textSize="12sp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/menu_item_add_button"
+            android:textColor="@color/colorWhite"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
+
+    <TextView
+            android:id="@+id/menu_item_middle"
+            android:text="@string/moyenne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"/>
+
+    <TextView
+            android:id="@+id/menu_item_middle_price"
+            tools:text="10.5 $"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
+            app:layout_constraintStart_toEndOf="@+id/menu_item_middle"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            android:textColor="@color/colorGreen"/>
+
+    <TextView
+            android:id="@+id/menu_item_large"
+            android:text="@string/large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
+            app:layout_constraintStart_toEndOf="@+id/menu_item_middle_price"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"/>
+
+    <TextView
+            android:id="@+id/menu_item_large_price"
+            tools:text="13.5 $"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
+            app:layout_constraintStart_toEndOf="@+id/menu_item_large"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            android:textColor="@color/colorGreen"/>
+
+    <ImageButton
+            android:id="@+id/menu_item_add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_shopping"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorTransparent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,20 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentPizzeriaBinding
 
-import com.jgdeveloppement.pizza_serradifalco.R
-
-/**
- * A simple [Fragment] subclass.
- */
 class PizzeriaFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pizzeria, container, false)
+    private var _binding: FragmentPizzeriaBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
+        _binding = FragmentPizzeriaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.typedTextView.playKeyStrokesAudio(false)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

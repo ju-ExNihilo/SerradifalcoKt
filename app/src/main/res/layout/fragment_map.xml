@@ -53,7 +53,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_width="0dp"
-                    android:layout_height="700dp"
+                    android:layout_height="680dp"
                     app:cardElevation="@dimen/default_card_elevation"
                     android:layout_marginTop="@dimen/default_card_margin_top"
                     app:cardBackgroundColor="@color/grayTransparent">
@@ -80,13 +80,41 @@
                             app:layout_constraintTop_toTopOf="@+id/map_default_card_pizza_image"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginTop="@dimen/default_card_name_image_margin_top"/>
-                    <TextView
-                            android:text="Map Fragment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView3"
+                    <Button
+                            android:id="@+id/serradifalco_button"
+                            android:text="Serradifalco"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             app:layout_constraintTop_toBottomOf="@+id/map_default_card_pizza_image"
-                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginTop="32dp" style="@style/HomeTitle"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/view2" android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"/>
+                    <View
+                            android:layout_width="1dp"
+                            android:layout_height="50dp" android:id="@+id/view2"
+                            app:layout_constraintTop_toBottomOf="@+id/map_default_card_pizza_image"
+                            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                            android:background="@color/colorTransparent"/>
+                    <Button
+                            android:id="@+id/leonardo_button"
+                            android:text="@string/leonardo_pizza"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/view2"
+                            app:layout_constraintTop_toBottomOf="@+id/map_default_card_pizza_image"
+                            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
+
+                    <fragment
+                            android:id="@+id/g_map_view"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            tools:context=".home.HomeActivity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view2" android:layout_marginBottom="60dp"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

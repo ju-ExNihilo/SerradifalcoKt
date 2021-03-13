@@ -63,4 +63,10 @@
     <dimen name="home_recycler_view_margin_bottom">75dp</dimen>
     <!-- Home Layout End -->
 
+    <!-- Pizzeria Layout -->
+    <dimen name="typed_text_size">16sp</dimen>
+    <dimen name="typed_text_margin_top">16dp</dimen>
+    <dimen name="typed_text_margin_bottom">75dp</dimen>
+    <!-- Pizzeria Layout End -->
+
 </resources>

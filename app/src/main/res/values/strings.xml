@@ -34,4 +34,18 @@
     <string name="call_us_for_menu">Nous Appeler</string>
     <!-- Menu String End -->
 
+    <!-- Pizzeria String -->
+    <string name="pizzeria_text">
+          Tout commence dans les années 60, lorsqu’une famille d’émigrés siciliens s’installe dans le sud de la France.\n\n
+         S’entame alors l’histoire d’un savoir-faire qui sera transmis sur 3 générations, le grand-père, le père puis le fils Sébastien.\n\n
+         Plus jeune, ayant passé la majeure partie de son enfance dans la pizzeria de son grand-père, rue Lamalgue au Mourillon, Sébastien a grandi avec sa passion pour la cuisine.\n\n
+         C’est ainsi qu’à ses vingt ans il obtient haut la main son diplôme de cuisinier et entame sa carrière dans quelques restaurants varois très côtés.\n\n
+         Quelques années plus tard, la fougue entrepreneuriale s’est emparée du jeune Sebastien qui a ainsi décidé de tout plaquer pour, comme le veut la tradition familiale, ouvrir sa propre pizzeria au 364, avenue du 11 Novembre à La Valette.\n\n
+         À cette époque, son père ayant repris la pizzeria familiale, c’est lui qui lui a transmis le savoir faire et la passion dont Sebastien bénéficie aujourd’hui.\n\n
+         Tout cela pour lui permettre en avril 2017 de lever le rideau et ainsi de régaler les soirées de nos très chers valettois.
+    </string>
+    <string name="moyenne">Moyenne :</string>
+    <string name="large">Large :</string>
+    <!-- Pizzeria String End -->
+
 </resources>

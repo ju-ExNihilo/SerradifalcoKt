@@ -7,12 +7,19 @@ import retrofit2.http.*
 
 interface ApiService{
 
+    // Setting
     @GET("/index.php")
     suspend fun getSettings(@Query("action")action : String, @Query("type") type : String): Settings
 
+    // Pizza
     @GET("/index.php")
     suspend fun getPizzaDay(@Query("action")action : String, @Query("type") type : String): Product
 
+    @GET("/index.php")
+    suspend fun getPizzaTomato(@Query("action")action : String, @Query("type") type : String): List<Product>
+
+
+    // User
     @GET("/index.php")
     suspend fun getUser(@Query("action")action : String, @Query("type") type : String, @Query("email") email : String): User
 
