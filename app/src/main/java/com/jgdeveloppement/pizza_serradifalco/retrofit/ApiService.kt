@@ -11,7 +11,7 @@ interface ApiService{
     @GET("/index.php")
     suspend fun getSettings(@Query("action")action : String, @Query("type") type : String): Settings
 
-    // Pizza
+    // Product
     @GET("/index.php")
     suspend fun getPizzaDay(@Query("action")action : String, @Query("type") type : String): Product
 

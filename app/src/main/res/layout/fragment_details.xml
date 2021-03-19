@@ -43,7 +43,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
             <com.google.android.material.card.MaterialCardView
                     android:id="@+id/details_default_card"
@@ -53,7 +53,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_width="0dp"
-                    android:layout_height="700dp"
+                    android:layout_height="wrap_content"
                     app:cardElevation="@dimen/default_card_elevation"
                     android:layout_marginTop="@dimen/default_card_margin_top"
                     app:cardBackgroundColor="@color/grayTransparent">
@@ -80,13 +80,255 @@
                             app:layout_constraintTop_toTopOf="@+id/details_default_card_pizza_image"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginTop="@dimen/default_card_name_image_margin_top"/>
-                    <TextView
-                            android:text="Details Fragment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView2"
+
+                    <androidx.cardview.widget.CardView
+                            android:id="@+id/details_card_pizza"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/details_card_pizza_height"
                             app:layout_constraintTop_toBottomOf="@+id/details_default_card_pizza_image"
-                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginTop="32dp" style="@style/HomeTitle"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:cardBackgroundColor="@color/colorTransparent"
+                            app:cardElevation="@dimen/details_card_pizza_elevation"
+                            android:layout_marginTop="@dimen/details_card_pizza_default_margin"
+                            android:layout_marginStart="@dimen/details_card_pizza_default_margin"
+                            android:layout_marginEnd="@dimen/details_card_pizza_default_margin">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/butn_background">
+
+                            <TextView
+                                    android:id="@+id/details_card_pizza_name"
+                                    tools:text="Tartufi"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:layout_marginStart="@dimen/details_card_pizza_name_horizontal_margin"
+                                    android:layout_marginEnd="@dimen/details_card_pizza_name_horizontal_margin"
+                                    android:layout_marginTop="@dimen/details_card_pizza_name_margin_top"
+                                    android:background="@drawable/underline_small_green"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorGreen"
+                                    android:textSize="@dimen/details_card_pizza_name_text_size"/>
+
+                            <TextView
+                                    android:id="@+id/details_card_pizza_conponent"
+                                    tools:text="tomates fraîches, buffala, poudre de truffe,
+                                     huile de truffe, roquette"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    app:layout_constraintTop_toBottomOf="@+id/details_card_pizza_name"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginStart="@dimen/details_card_pizza_conponent_default_margin"
+                                    android:layout_marginEnd="@dimen/details_card_pizza_conponent_default_margin"
+                                    android:layout_marginTop="@dimen/details_card_pizza_conponent_default_margin"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorWhite"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioGroup
+                            android:id="@+id/radio_group_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/details_card_pizza"
+                            android:orientation="horizontal"
+                            android:textAlignment="center"
+                            android:layout_marginTop="@dimen/radio_group_price_margin_top"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginStart="@dimen/radio_group_price_horizontal_margin"
+                            android:layout_marginEnd="@dimen/radio_group_price_horizontal_margin">
+
+                        <RadioButton
+                                android:id="@+id/radio_button_middle_size"
+                                tools:text="Moyenne : 10.5 $"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorWhite"
+                                android:checked="true"/>
+
+                        <RadioButton
+                                android:id="@+id/radio_button_large_size"
+                                tools:text="Large : 12.5 $"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:tag="Large"
+                                android:textColor="@color/colorWhite"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                            android:id="@+id/details_quantity_title"
+                            android:text="@string/quantity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toStartOf="@+id/details_item_quantity_spinner"
+                            app:layout_constraintTop_toTopOf="@+id/details_item_quantity_spinner"
+                            app:layout_constraintBottom_toBottomOf="@+id/details_item_quantity_spinner"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/details_quantity_title_text_size"
+                            android:textAlignment="center"
+                            android:layout_marginEnd="@dimen/details_quantity_title_margin_end"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/details_item_quantity_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/number_product_details"
+                            android:backgroundTint="@color/colorWhite"
+                            android:theme="@style/mySpinnerItemStyle"
+                            android:foregroundTint="@color/colorPrimary"
+                            android:popupBackground="@color/colorPrimary"
+                            android:minWidth="@dimen/spinner_min_width"
+                            app:layout_constraintBottom_toBottomOf="@+id/details_default_card_pizza_image"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                    <TextView
+                            android:id="@+id/details_supplement_title"
+                            android:text="@string/supplements"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/radio_group_price"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="@dimen/details_supplement_title_margin_top"
+                            android:layout_marginStart="@dimen/details_title_horizontal_margin"
+                            android:layout_marginEnd="@dimen/details_title_horizontal_margin"
+                            android:background="@drawable/underline_small_white"
+                            android:drawableEnd="@drawable/arrow_down"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/details_title_text_size"/>
+
+                    <com.skydoves.doublelift.DoubleLiftLayout
+                            android:id="@+id/details_supplement_double_lift"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/details_supplement_title"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:doubleLift_verticalDuration="500"
+                            app:doubleLift_foldedHeight="0dp"
+                            app:doubleLift_autoExpand="false"
+                            app:doubleLift_startOrientation="vertical"
+                            app:doubleLift_animation="bounce">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/extra_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/add_extra_item"/>
+
+                    </com.skydoves.doublelift.DoubleLiftLayout>
+
+                    <TextView
+                            android:id="@+id/details_drink_title"
+                            android:text="@string/boissons"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/details_supplement_double_lift"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="@dimen/details_title_margin_top"
+                            android:background="@drawable/underline_small_white"
+                            android:drawableEnd="@drawable/arrow_down"
+                            android:layout_marginStart="@dimen/details_title_horizontal_margin"
+                            android:layout_marginEnd="@dimen/details_title_horizontal_margin"
+                            android:textColor="@color/colorWhite"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:textSize="@dimen/details_title_text_size"/>
+
+                    <com.skydoves.doublelift.DoubleLiftLayout
+                            android:id="@+id/details_drink_double_lift"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/details_drink_title"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:doubleLift_verticalDuration="500"
+                            app:doubleLift_foldedHeight="0dp"
+                            app:doubleLift_autoExpand="false"
+                            app:doubleLift_startOrientation="vertical"
+                            app:doubleLift_animation="bounce">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/drink_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/add_product_item"/>
+
+                    </com.skydoves.doublelift.DoubleLiftLayout>
+
+                    <TextView
+                            android:id="@+id/details_dessert_title"
+                            android:text="@string/desserts"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/details_drink_double_lift"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="@dimen/details_title_margin_top"
+                            android:layout_marginStart="@dimen/details_title_horizontal_margin"
+                            android:layout_marginEnd="@dimen/details_title_horizontal_margin"
+                            android:background="@drawable/underline_small_white"
+                            android:drawableEnd="@drawable/arrow_down"
+                            android:textColor="@color/colorWhite"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:textSize="@dimen/details_title_text_size"/>
+
+                    <com.skydoves.doublelift.DoubleLiftLayout
+                            android:id="@+id/details_dessert_double_lift"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/details_dessert_title"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:doubleLift_verticalDuration="500"
+                            app:doubleLift_foldedHeight="0dp"
+                            app:doubleLift_autoExpand="false"
+                            app:doubleLift_startOrientation="vertical"
+                            app:doubleLift_animation="bounce">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/dessert_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/add_product_item"/>
+
+                    </com.skydoves.doublelift.DoubleLiftLayout>
+
+                    <Button
+                            android:id="@+id/details_add_button"
+                            android:text="@string/ajouter"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/details_add_button_height"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/details_dessert_double_lift"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginTop="@dimen/details_add_button_vertical_margin"
+                            android:layout_marginBottom="@dimen/details_add_button_vertical_margin"
+                            android:layout_marginStart="@dimen/details_add_button_horizontal_margin"
+                            android:layout_marginEnd="@dimen/details_add_button_horizontal_margin"
+                            android:backgroundTint="@color/colorAccent"
+                            android:shadowColor="@color/colorAccent"
+                            app:cornerRadius="@dimen/details_add_button_corner_radius"
+                            android:textSize="@dimen/details_title_text_size"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

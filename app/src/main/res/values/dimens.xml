@@ -69,4 +69,48 @@
     <dimen name="typed_text_margin_bottom">75dp</dimen>
     <!-- Pizzeria Layout End -->
 
+    <!-- Details Item Layout -->
+    <dimen name="spinner_margin_start">8dp</dimen>
+    <dimen name="spinner_margin_top_bottom">16dp</dimen>
+    <dimen name="spinner_min_width">50dp</dimen>
+    <dimen name="details_item_text_size">18sp</dimen>
+    <dimen name="details_item_name_margin_start">8dp</dimen>
+    <dimen name="details_item_default_margin_end">16dp</dimen>
+    <dimen name="details_item_check_box_margin">6dp</dimen>
+    <!-- Details Item Layout End -->
+
+    <!-- Details Layout -->
+    <dimen name="details_card_pizza_height">130dp</dimen>
+    <dimen name="details_card_pizza_elevation">15dp</dimen>
+    <dimen name="details_card_pizza_default_margin">8dp</dimen>
+    <dimen name="details_card_pizza_name_horizontal_margin">24dp</dimen>
+    <dimen name="details_card_pizza_name_margin_top">8dp</dimen>
+    <dimen name="details_card_pizza_name_text_size">30sp</dimen>
+    <dimen name="details_card_pizza_conponent_default_margin">8dp</dimen>
+    <dimen name="radio_group_price_horizontal_margin">24dp</dimen>
+    <dimen name="radio_group_price_margin_top">8dp</dimen>
+    <dimen name="details_supplement_title_margin_top">8dp</dimen>
+    <dimen name="details_title_horizontal_margin">8dp</dimen>
+    <dimen name="details_title_text_size">18sp</dimen>
+    <dimen name="details_title_margin_top">16dp</dimen>
+    <dimen name="details_add_button_height">60dp</dimen>
+    <dimen name="details_add_button_vertical_margin">24dp</dimen>
+    <dimen name="details_add_button_horizontal_margin">32dp</dimen>
+    <dimen name="details_add_button_corner_radius">15dp</dimen>
+    <dimen name="details_quantity_title_text_size">14sp</dimen>
+    <dimen name="details_quantity_title_margin_end">16dp</dimen>
+    <!-- Details Layout End -->
+
+    <!-- Menu Layout -->
+    <dimen name="tab_layout_menu_horizontal_margin">8dp</dimen>
+    <dimen name="menu_item_name_margin_top">16dp</dimen>
+    <dimen name="menu_item_name_margin_start">8dp</dimen>
+    <dimen name="menu_item_name_text_size">24sp</dimen>
+    <dimen name="menu_item_component_text_size">12sp</dimen>
+    <dimen name="menu_item_component_horizontal_margin">8dp</dimen>
+    <dimen name="menu_item_default_margin">8dp</dimen>
+    <dimen name="menu_item_text_size">16sp</dimen>
+    <dimen name="menu_item_large_margin_start">16dp</dimen>
+    <!-- Menu Layout End -->
+
 </resources>

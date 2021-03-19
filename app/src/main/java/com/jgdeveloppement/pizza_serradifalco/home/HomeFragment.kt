@@ -52,7 +52,6 @@ class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
         initCardMenu()
         initPizzaDay()
         testUser()
-        Log.i("DEBUGGG", "firstname : ${UserData.userFirstName} lastname : ${UserData.userLastName} userId : ${UserData.userId} phone : ${UserData.userPhone}")
     }
 
     private fun setupViewModel() {

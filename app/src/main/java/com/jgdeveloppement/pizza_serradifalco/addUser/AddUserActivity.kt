@@ -72,9 +72,7 @@ class AddUserActivity : AppCompatActivity() {
                             HomeActivity.navigate(this)
                         }
                     }
-                    Status.ERROR -> {
-                        Log.i("DEBUGGG", it.message)
-                    }
+                    Status.ERROR -> {}
                     Status.LOADING -> {
                         binding.addUserProgressLayout.visibility = View.VISIBLE
                     }

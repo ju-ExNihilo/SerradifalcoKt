@@ -56,10 +56,16 @@ class MenuAdapter(private val context: HomeActivity,
             }
         }
 
-        holder.itemName.text = currentProduct.name
+        holder.itemName.text = currentProduct.name.replace("_", " ")
         holder.itemComponent.text = currentProduct.component
         holder.itemMiddlePrice.text = currentProduct.mediumPrice.toString() + " $"
-        holder.itemLargePrice.text = currentProduct.largePrice.toString() + " $"
+
+        if (currentProduct.largePrice == 0.0){
+            holder.itemLargePrice.text =  "N/A"
+        }else{
+            holder.itemLargePrice.text = currentProduct.largePrice.toString() + " $"
+        }
+
 
         holder.addButton.setOnClickListener { onProductShoppingClicked.onClickedProductShop(currentProduct.id) }
     }

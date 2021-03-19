@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Pizza-Serradifalco</string>
+    <string name="app_no_name"></string>
 
     <!-- Login String -->
     <string name="pizza_au_feu_de_bois">Pizza Au Feu De Bois</string>
@@ -36,16 +37,55 @@
 
     <!-- Pizzeria String -->
     <string name="pizzeria_text">
-          Tout commence dans les années 60, lorsqu’une famille d’émigrés siciliens s’installe dans le sud de la France.\n\n
-         S’entame alors l’histoire d’un savoir-faire qui sera transmis sur 3 générations, le grand-père, le père puis le fils Sébastien.\n\n
-         Plus jeune, ayant passé la majeure partie de son enfance dans la pizzeria de son grand-père, rue Lamalgue au Mourillon, Sébastien a grandi avec sa passion pour la cuisine.\n\n
-         C’est ainsi qu’à ses vingt ans il obtient haut la main son diplôme de cuisinier et entame sa carrière dans quelques restaurants varois très côtés.\n\n
-         Quelques années plus tard, la fougue entrepreneuriale s’est emparée du jeune Sebastien qui a ainsi décidé de tout plaquer pour, comme le veut la tradition familiale, ouvrir sa propre pizzeria au 364, avenue du 11 Novembre à La Valette.\n\n
-         À cette époque, son père ayant repris la pizzeria familiale, c’est lui qui lui a transmis le savoir faire et la passion dont Sebastien bénéficie aujourd’hui.\n\n
-         Tout cela pour lui permettre en avril 2017 de lever le rideau et ainsi de régaler les soirées de nos très chers valettois.
+        Tout commence dans les années 60, lorsqu’une famille d’émigrés siciliens s’installe dans le sud de la
+        France.\n\n
+        S’entame alors l’histoire d’un savoir-faire qui sera transmis sur 3 générations, le grand-père, le père puis le
+        fils Sébastien.\n\n
+        Plus jeune, ayant passé la majeure partie de son enfance dans la pizzeria de son grand-père, rue Lamalgue au
+        Mourillon, Sébastien a grandi avec sa passion pour la cuisine.\n\n
+        C’est ainsi qu’à ses vingt ans il obtient haut la main son diplôme de cuisinier et entame sa carrière dans
+        quelques restaurants varois très côtés.\n\n
+        Quelques années plus tard, la fougue entrepreneuriale s’est emparée du jeune Sebastien qui a ainsi décidé de
+        tout plaquer pour, comme le veut la tradition familiale, ouvrir sa propre pizzeria au 364, avenue du 11 Novembre
+        à La Valette.\n\n
+        À cette époque, son père ayant repris la pizzeria familiale, c’est lui qui lui a transmis le savoir faire et la
+        passion dont Sebastien bénéficie aujourd’hui.\n\n
+        Tout cela pour lui permettre en avril 2017 de lever le rideau et ainsi de régaler les soirées de nos très chers
+        valettois.
     </string>
+    <!-- Pizzeria String End -->
+
+    <!-- Details String -->
+    <string-array name="number_item">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="number_product_details">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="moyenne">Moyenne :</string>
     <string name="large">Large :</string>
-    <!-- Pizzeria String End -->
+    <string name="prix">Prix :</string>
+    <string name="supplements">Suppléments</string>
+    <string name="boissons">Boissons</string>
+    <string name="desserts">Desserts</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="quantity">Quantité :</string>
+    <string name="medium_price">Moyenne : %1$s $</string>
+    <string name="large_price">Large : %1$s $</string>
+    <string name="item_price">%1$s $</string>
+    <!-- Details String End -->
+
+    <!-- Shopping Basket String -->
+
+    <!-- Shopping Basket String End -->
 
 </resources>

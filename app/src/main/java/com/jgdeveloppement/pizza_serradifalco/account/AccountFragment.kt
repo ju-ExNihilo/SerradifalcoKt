@@ -5,20 +5,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentAccountBinding
+import com.jgdeveloppement.pizza_serradifalco.utils.UserData
 
-import com.jgdeveloppement.pizza_serradifalco.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class AccountFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false)
+    private var _binding: FragmentAccountBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
+        _binding = FragmentAccountBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUserData()
+    }
+
+    private fun initUserData(){
+        binding.accountFirstName.text = UserData.userFirstName
+        binding.accountLastName.text = UserData.userLastName
+        binding.accountPhone.text = UserData.userPhone
     }
 
 }

@@ -12,6 +12,12 @@
         <item name="snackbarTextViewStyle">@style/MySnackbarTextView</item>
     </style>
 
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@color/colorWhite</item>
+    </style>
+
+
     <style name="CustomTopCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_top_corners</item>
     </style>
@@ -76,6 +82,12 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="mySpinnerItemStyle" >
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
 
+    <style name="mySpinnerItemStyle2" >
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
 
 </resources>

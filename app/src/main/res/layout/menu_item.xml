@@ -15,9 +15,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
-            android:textSize="24sp"
+            android:layout_marginTop="@dimen/menu_item_name_margin_top"
+            android:layout_marginStart="@dimen/menu_item_name_margin_start"
+            android:textSize="@dimen/menu_item_name_text_size"
             android:textStyle="bold"
             android:textColor="@color/colorGreen"/>
 
@@ -28,13 +28,14 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/menu_item_name"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/menu_item_add_button"
             android:textStyle="italic"
-            android:textSize="12sp"
+            android:textSize="@dimen/menu_item_component_text_size"
             android:ellipsize="marquee"
             android:singleLine="true"
-            app:layout_constraintEnd_toStartOf="@+id/menu_item_add_button"
             android:textColor="@color/colorWhite"
-            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
+            android:layout_marginStart="@dimen/menu_item_component_horizontal_margin"
+            android:layout_marginEnd="@dimen/menu_item_component_horizontal_margin"/>
 
     <TextView
             android:id="@+id/menu_item_middle"
@@ -43,10 +44,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/menu_item_default_margin"
+            android:layout_marginStart="@dimen/menu_item_default_margin"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="@dimen/menu_item_text_size"
             android:textColor="@color/colorWhite"/>
 
     <TextView
@@ -56,10 +57,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
             app:layout_constraintStart_toEndOf="@+id/menu_item_middle"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/menu_item_default_margin"
+            android:layout_marginStart="@dimen/menu_item_default_margin"
             android:textStyle="italic"
-            android:textSize="16sp"
+            android:textSize="@dimen/menu_item_text_size"
             android:textColor="@color/colorGreen"/>
 
     <TextView
@@ -69,10 +70,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
             app:layout_constraintStart_toEndOf="@+id/menu_item_middle_price"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/menu_item_default_margin"
+            android:layout_marginStart="@dimen/menu_item_large_margin_start"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="@dimen/menu_item_text_size"
             android:textColor="@color/colorWhite"/>
 
     <TextView
@@ -82,10 +83,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/menu_item_component"
             app:layout_constraintStart_toEndOf="@+id/menu_item_large"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/menu_item_default_margin"
+            android:layout_marginTop="@dimen/menu_item_default_margin"
             android:textStyle="italic"
-            android:textSize="16sp"
+            android:textSize="@dimen/menu_item_text_size"
             android:textColor="@color/colorGreen"/>
 
     <ImageButton
@@ -95,8 +96,8 @@
             app:srcCompat="@drawable/ic_shopping_premium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            android:background="@color/colorTransparent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/menu_item_default_margin"
+            android:background="@color/colorTransparent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

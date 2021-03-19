@@ -6,20 +6,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.firebase.ui.auth.AuthUI
-import com.google.android.material.navigation.NavigationView
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityHomeBinding
 import com.jgdeveloppement.pizza_serradifalco.login.LoginActivity
+import com.jgdeveloppement.pizza_serradifalco.shoppingBasket.ShoppingBasketActivity
+import com.jgdeveloppement.pizza_serradifalco.utils.UserData
 import com.mikepenz.actionitembadge.library.ActionItemBadge
 import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
 
@@ -27,8 +27,6 @@ class HomeActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityHomeBinding
     private var navController: NavController? = null
-    private var navOptions: NavOptions? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,17 +38,28 @@ class HomeActivity : AppCompatActivity(){
         binding.navView.setupWithNavController(navController!!)
         binding.bottomNavigationView.setupWithNavController(navController!!)
         configureNavigation()
+        updateUiForSomeDestination()
     }
 
+    override fun onResume() {
+        super.onResume()
+        invalidateOptionsMenu()
+    }
+
+    //  Configure ToolBar with badge
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.toolbar_menu, menu)
-        ActionItemBadge.update(this, menu?.findItem(R.id.shopping), FontAwesome.Icon.faw_shopping_basket, ActionItemBadge.BadgeStyles.GREEN, 2)
+        ActionItemBadge.update(this, menu?.findItem(R.id.shopping), FontAwesome.Icon.faw_shopping_basket, ActionItemBadge.BadgeStyles.GREEN, UserData.getNumberProduct())
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onBackPressed() {
-        if (binding.layoutDrawer.isDrawerOpen(GravityCompat.START)) binding.layoutDrawer.closeDrawer(GravityCompat.START) else super.onBackPressed()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.shopping) {
+            ShoppingBasketActivity.navigate(this)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     //  Configure Drawer Layout
@@ -60,7 +69,9 @@ class HomeActivity : AppCompatActivity(){
         toggle.syncState()
     }
 
-
+    override fun onBackPressed() {
+        if (binding.layoutDrawer.isDrawerOpen(GravityCompat.START)) binding.layoutDrawer.closeDrawer(GravityCompat.START) else super.onBackPressed()
+    }
 
     //  Configure Bottom navigation
     private fun configureNavigation(){
@@ -79,6 +90,15 @@ class HomeActivity : AppCompatActivity(){
         }
     }
 
+    private fun updateUiForSomeDestination(){
+        navController?.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.detailsFragment || destination.id == R.id.accountFragment || destination.id == R.id.pizzeriaFragment){
+                binding.bottomNavigationView.visibility = View.GONE
+            }else{
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
+    }
 
     companion object {
         /** Used to navigate to this activity  */

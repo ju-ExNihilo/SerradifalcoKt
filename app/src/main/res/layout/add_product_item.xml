@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTransparent">
+
+
+    <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/details_item_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:entries="@array/number_item"
+            android:backgroundTint="@color/colorWhite"
+            android:theme="@style/mySpinnerItemStyle"
+            android:layout_marginStart="@dimen/spinner_margin_start"
+            android:layout_marginBottom="@dimen/spinner_margin_top_bottom"
+            android:layout_marginTop="@dimen/spinner_margin_top_bottom"
+            android:foregroundTint="@color/colorPrimary"
+            android:popupBackground="@color/colorPrimary"
+            android:minWidth="@dimen/spinner_min_width"/>
+
+    <TextView
+            android:id="@+id/details_item_name"
+            tools:text="Haggendas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/details_item_spinner"
+            app:layout_constraintStart_toEndOf="@+id/details_item_spinner"
+            app:layout_constraintBottom_toBottomOf="@+id/details_item_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            android:textSize="@dimen/details_item_text_size"
+            android:textColor="@color/colorGreen"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/details_item_name_margin_start" />
+
+    <TextView
+            android:id="@+id/textView3"
+            android:text="@string/prix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/details_item_name"
+            app:layout_constraintBottom_toBottomOf="@+id/details_item_name"
+            app:layout_constraintEnd_toStartOf="@+id/details_item_price"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/details_item_text_size"
+            android:layout_marginEnd="@dimen/details_item_default_margin_end"/>
+
+    <TextView
+            android:id="@+id/details_item_price"
+            tools:text="3,5 $"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/textView3"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/colorGreen"
+            android:textSize="@dimen/details_item_text_size"
+            android:textStyle="italic"
+            android:layout_marginEnd="@dimen/details_item_default_margin_end"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
