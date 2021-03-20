@@ -42,4 +42,23 @@ class MainRepository(private val apiHelper: ApiHelper) {
             emit(Resource.error(data=null,message = exception.message?:"Error Occurred"))
         }
     }
+
+    //Address
+    fun getAllAddressByUserId(userId: Int) = liveData(Dispatchers.IO){
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = apiHelper.getAllAddressByUserId(userId)))
+        }catch (exception: Exception){
+            emit(Resource.error(data = null, message = exception.message?: "Error Occurred!"))
+        }
+    }
+
+    fun insertAddress(address: HashMap<String, String>) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data= apiHelper.insertAddress(address)))
+        }catch (exception: Exception){
+            emit(Resource.error(data=null,message = exception.message?:"Error Occurred"))
+        }
+    }
 }

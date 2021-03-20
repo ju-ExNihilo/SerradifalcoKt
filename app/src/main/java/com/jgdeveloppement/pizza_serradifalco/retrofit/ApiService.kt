@@ -1,5 +1,6 @@
 package com.jgdeveloppement.pizza_serradifalco.retrofit
 
+import com.jgdeveloppement.pizza_serradifalco.models.Address
 import com.jgdeveloppement.pizza_serradifalco.models.Product
 import com.jgdeveloppement.pizza_serradifalco.models.Settings
 import com.jgdeveloppement.pizza_serradifalco.models.User
@@ -21,7 +22,6 @@ interface ApiService{
     @GET("/index.php")
     suspend fun getProductList(@Query("action")action : String, @Query("type") type : String): List<Product>
 
-
     // User
     @GET("/index.php")
     suspend fun getUser(@Query("action")action : String, @Query("type") type : String, @Query("email") email : String): User
@@ -29,4 +29,12 @@ interface ApiService{
     @FormUrlEncoded
     @POST("/index.php?action=api&type=AddUser")
     suspend fun createUser(@FieldMap body: HashMap<String, String>): User
+
+    //Address
+    @GET("/index.php")
+    suspend fun getAllAddressByUserId(@Query("action")action : String, @Query("type") type : String, @Query("id") id : Int): List<Address>
+
+    @FormUrlEncoded
+    @POST("/index.php?action=api&type=InsertAddress")
+    suspend fun insertAddress(@FieldMap body: HashMap<String, String>): Address
 }

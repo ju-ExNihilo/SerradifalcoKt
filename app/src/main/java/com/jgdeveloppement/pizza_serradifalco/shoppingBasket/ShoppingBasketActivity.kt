@@ -47,14 +47,6 @@ class ShoppingBasketActivity : AppCompatActivity(), ShoppingBasketAdapter.OnShop
         binding.shoppingBasketTotalPrice.text = getString(R.string.item_price, String.format("%.1f", UserData.getShopTotalPrice()))
     }
 
-    companion object {
-        /** Used to navigate to this activity  */
-        fun navigate(activity: FragmentActivity?) {
-            val intent = Intent(activity, ShoppingBasketActivity::class.java)
-            ActivityCompat.startActivity(activity!!, intent, null)
-        }
-    }
-
     override fun onSpinnerQuantityChangeListener(position: Int, quantity: Int) {
         val shoppingRow = UserData.shoppingRowList[position]
         shoppingRow.quantity = quantity + 1
@@ -66,5 +58,13 @@ class ShoppingBasketActivity : AppCompatActivity(), ShoppingBasketAdapter.OnShop
         UserData.shoppingRowList.removeAt(position)
         initData()
         initTotal()
+    }
+
+    companion object {
+        /** Used to navigate to this activity  */
+        fun navigate(activity: FragmentActivity?) {
+            val intent = Intent(activity, ShoppingBasketActivity::class.java)
+            ActivityCompat.startActivity(activity!!, intent, null)
+        }
     }
 }

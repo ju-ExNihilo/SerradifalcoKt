@@ -14,7 +14,12 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     fun getPizzaDay() = mainRepository.getPizzaDay()
 
+    //User
     fun getUser(email: String) = mainRepository.getUser(email)
-
     fun createUser(user: HashMap<String, String>) = mainRepository.createUser(user)
+
+    //Address
+    fun getAllAddressByUserId(userId: Int) = mainRepository.getAllAddressByUserId(userId)
+    fun insertAddress(address: HashMap<String, String>) = mainRepository.insertAddress(address)
+
 }

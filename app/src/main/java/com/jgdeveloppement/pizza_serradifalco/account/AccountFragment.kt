@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jgdeveloppement.pizza_serradifalco.addAddress.AddAddressActivity
 import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentAccountBinding
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
 
@@ -27,6 +28,8 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUserData()
+
+        binding.accountAddAddressButton.setOnClickListener { AddAddressActivity.navigate(activity) }
     }
 
     private fun initUserData(){

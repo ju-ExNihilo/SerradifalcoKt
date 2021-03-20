@@ -14,4 +14,8 @@ class ApiHelper(private val apiService: ApiService) {
     // User
     suspend fun getUser(email: String) = apiService.getUser("api","User", email)
     suspend fun createUser(user: HashMap<String, String>) = apiService.createUser(user)
+
+    //Address
+    suspend fun getAllAddressByUserId(userId: Int) = apiService.getAllAddressByUserId("api", "AddressByUserId", userId)
+    suspend fun insertAddress(address: HashMap<String, String>) = apiService.insertAddress(address)
 }

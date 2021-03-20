@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back2"
+        tools:context=".addAddress.AddAddressActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/add_address_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="6dp"
+                android:background="@color/colorTransparent"
+                app:titleTextColor="@color/colorWhite"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:theme="@style/ToolbarTheme"
+                app:subtitleTextColor="@color/colorWhite"/>
+
+        <!-- Loading panel -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add_address_progress_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/colorPrimary"
+                android:elevation="30dp">
+
+            <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/progressBar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Loading panel -->
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/add_address__default_card"
+                style="@style/CustomTopCardViewStyle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="700dp"
+                app:cardElevation="@dimen/default_card_elevation"
+                android:layout_marginTop="@dimen/default_card_margin_top"
+                app:cardBackgroundColor="@color/grayTransparent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                        android:id="@+id/add_address_default_card_pizza_image"
+                        android:src="@drawable/back4"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/default_card_pizza_image_height"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:scaleType="fitXY"/>
+
+                <ImageView
+                        android:id="@+id/add_address_default_card_name_image"
+                        android:src="@drawable/logo6"
+                        android:layout_width="@dimen/default_card_name_image_width"
+                        android:layout_height="@dimen/default_card_name_image_height"
+                        app:layout_constraintTop_toTopOf="@+id/add_address_default_card_pizza_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/default_card_name_image_margin_top"/>
+                <TextView
+                        android:id="@+id/add_address_title"
+                        android:text="Ajouter une adresse"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/add_address_default_card_name_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24sp"
+                        android:background="@drawable/underline_small_white"
+                        android:layout_marginEnd="32dp"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/number_way_input_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/add_address_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="24dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/number_way_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Numéro de voie"
+                            android:backgroundTint="@color/colorWhite"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/way_input_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/number_way_error"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        android:layout_marginTop="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/way_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Voie"
+                            android:backgroundTint="@color/colorWhite" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/post_code_input_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/way_error"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        android:layout_marginTop="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/post_code_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Code postale"
+                            android:backgroundTint="@color/colorWhite"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/additional_input_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/post_code_error"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/additional_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Complément d'adresse"
+                            android:backgroundTint="@color/colorWhite"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                        android:id="@+id/add_address_validate_button"
+                        android:text="@string/ajouter"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintTop_toBottomOf="@+id/additional_error"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="32dp"
+                        android:elevation="20dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textSize="18sp"
+                        app:cornerRadius="15dp"
+                        android:layout_marginTop="24dp"/>
+
+                <TextView
+                        android:id="@+id/number_way_error"
+                        android:text="Merci de saisir votre Prénom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/number_way_input_layout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#F44336"
+                        android:textAlignment="center"
+                        android:visibility="gone"/>
+
+                <TextView
+                        android:id="@+id/way_error"
+                        android:text="Merci de saisir votre nom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/way_input_layout"
+                        android:layout_marginTop="3dp"
+                        android:textAlignment="center"
+                        android:textColor="#F44336"
+                        android:visibility="gone"/>
+
+                <TextView
+                        android:id="@+id/post_code_error"
+                        android:text="Merci de saisir votre numéro de téléphone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/post_code_input_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="3dp"
+                        android:textAlignment="center"
+                        android:textColor="#F44336"
+                        android:visibility="gone"/>
+
+                <TextView
+                        android:id="@+id/additional_error"
+                        android:text="Merci de rentrer un mot de passe pour utiliser le site web"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/additional_input_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="3dp"
+                        android:textAlignment="center"
+                        android:textColor="#F44336"
+                        android:visibility="gone"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
