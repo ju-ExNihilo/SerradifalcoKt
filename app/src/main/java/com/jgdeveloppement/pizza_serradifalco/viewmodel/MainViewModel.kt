@@ -17,9 +17,12 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     //User
     fun getUser(email: String) = mainRepository.getUser(email)
     fun createUser(user: HashMap<String, String>) = mainRepository.createUser(user)
+    fun updateUser(user: HashMap<String, String>) = mainRepository.updateUser(user)
 
     //Address
     fun getAllAddressByUserId(userId: Int) = mainRepository.getAllAddressByUserId(userId)
-    fun insertAddress(address: HashMap<String, String>) = mainRepository.insertAddress(address)
+    fun deleteAddress(addressId: Int, userId: Int) = mainRepository.deleteAddress(addressId, userId)
+    fun insertAddress(wayNumber : Int, way : String,  postCode : String, town : String, additionalAddress : String, userId : Int) =
+        mainRepository.insertAddress(wayNumber, way, postCode, town, additionalAddress, userId)
 
 }

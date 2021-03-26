@@ -36,12 +36,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@color/colorPrimary"
-                android:elevation="30dp">
+                android:elevation="@dimen/progress_layout_elevation">
 
             <ProgressBar
                     style="?android:attr/progressBarStyle"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/progress_bar_size"
+                    android:layout_height="@dimen/progress_bar_size"
                     android:id="@+id/progressBar"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -52,14 +52,15 @@
         <!-- Loading panel -->
 
         <com.google.android.material.card.MaterialCardView
-                android:id="@+id/add_address__default_card"
+                android:id="@+id/menu_default_card"
                 style="@style/CustomTopCardViewStyle"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="0dp"
-                android:layout_height="700dp"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/default_card_min_height"
                 app:cardElevation="@dimen/default_card_elevation"
                 android:layout_marginTop="@dimen/default_card_margin_top"
                 app:cardBackgroundColor="@color/grayTransparent">
@@ -88,18 +89,16 @@
                         android:layout_marginTop="@dimen/default_card_name_image_margin_top"/>
                 <TextView
                         android:id="@+id/add_address_title"
-                        android:text="Ajouter une adresse"
+                        android:text="@string/ajouter_une_adresse"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/add_address_default_card_name_image"
                         app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/add_title_margin_start"
+                        android:layout_marginTop="@dimen/add_title_margin_top"
                         android:textColor="@color/colorWhite"
-                        android:textSize="24sp"
-                        android:background="@drawable/underline_small_white"
-                        android:layout_marginEnd="32dp"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"/>
+                        android:textSize="@dimen/add_title_text_size"
+                        android:background="@drawable/underline_small_white"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/number_way_input_layout"
@@ -107,21 +106,22 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/add_address_title"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="24dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp">
+                        android:layout_marginStart="@dimen/add_input_layout_default_margin"
+                        android:layout_marginEnd="@dimen/add_input_layout_default_margin"
+                        android:layout_marginTop="@dimen/add_input_layout_top_margin"
+                        app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/number_way_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Numéro de voie"
-                            android:backgroundTint="@color/colorWhite"/>
+                            android:hint="@string/numero_de_voie"
+                            android:backgroundTint="@color/colorWhite"
+                            android:inputType="number"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,68 +131,68 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/number_way_error"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginStart="@dimen/add_input_layout_default_margin"
+                        android:layout_marginEnd="@dimen/add_input_layout_default_margin"
+                        android:layout_marginTop="@dimen/add_input_layout_default_margin"
+                        app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/way_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Voie"
+                            android:hint="@string/voie"
                             android:backgroundTint="@color/colorWhite" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <androidx.cardview.widget.CardView
                         android:id="@+id/post_code_input_layout"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         app:layout_constraintTop_toBottomOf="@+id/way_error"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginEnd="@dimen/add_input_layout_default_margin"
+                        android:layout_marginStart="@dimen/add_input_layout_default_margin"
+                        android:layout_marginTop="@dimen/add_input_layout_default_margin"
+                        android:background="@color/colorWhite"
+                        app:cardCornerRadius="@dimen/add_corner_radius">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/post_code_edit_text"
+                    <Spinner
+                            android:id="@+id/post_code_spinner"
+                            android:entries="@array/code_post_item"
+                            android:theme="@style/mySpinnerItemStyle2"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Code postale"
-                            android:backgroundTint="@color/colorWhite"/>
+                            android:layout_height="match_parent"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+
 
                 <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/additional_input_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/post_code_error"
-                        android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginEnd="@dimen/add_input_layout_default_margin"
+                        android:layout_marginStart="@dimen/add_input_layout_default_margin"
+                        android:layout_marginTop="@dimen/add_input_layout_default_margin"
+                        app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/additional_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Complément d'adresse"
+                            android:hint="@string/complement_d_adresse"
                             android:backgroundTint="@color/colorWhite"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -201,68 +201,54 @@
                         android:id="@+id/add_address_validate_button"
                         android:text="@string/ajouter"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        app:layout_constraintTop_toBottomOf="@+id/additional_error"
+                        android:layout_height="@dimen/add_button_height"
+                        app:layout_constraintTop_toBottomOf="@+id/additional_input_layout"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="32dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="32dp"
-                        android:elevation="20dp"
+                        android:layout_marginStart="@dimen/add_button_horizontal_margin"
+                        android:layout_marginTop="@dimen/add_button_top_margin"
+                        android:layout_marginEnd="@dimen/add_button_horizontal_margin"
                         android:backgroundTint="@color/colorAccent"
-                        android:textSize="18sp"
-                        app:cornerRadius="15dp"
-                        android:layout_marginTop="24dp"/>
+                        android:textSize="@dimen/add_button_text_size"
+                        app:cornerRadius="@dimen/add_corner_radius"/>
 
                 <TextView
                         android:id="@+id/number_way_error"
-                        android:text="Merci de saisir votre Prénom"
+                        android:text="@string/merci_de_saisir_le_numero_de_la_voie"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/number_way_input_layout"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="3dp"
-                        android:textColor="#F44336"
+                        android:layout_marginTop="@dimen/add_error_margin_top"
+                        android:textColor="@color/colorRed"
                         android:textAlignment="center"
                         android:visibility="gone"/>
 
                 <TextView
                         android:id="@+id/way_error"
-                        android:text="Merci de saisir votre nom"
+                        android:text="@string/merci_de_saisir_la_voie"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/way_input_layout"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="@dimen/add_error_margin_top"
                         android:textAlignment="center"
-                        android:textColor="#F44336"
+                        android:textColor="@color/colorRed"
                         android:visibility="gone"/>
 
                 <TextView
                         android:id="@+id/post_code_error"
-                        android:text="Merci de saisir votre numéro de téléphone"
+                        android:text="@string/merci_de_saisir_votre_code_postale"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/post_code_input_layout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="@dimen/add_error_margin_top"
                         android:textAlignment="center"
-                        android:textColor="#F44336"
-                        android:visibility="gone"/>
-
-                <TextView
-                        android:id="@+id/additional_error"
-                        android:text="Merci de rentrer un mot de passe pour utiliser le site web"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@+id/additional_input_layout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginTop="3dp"
-                        android:textAlignment="center"
-                        android:textColor="#F44336"
+                        android:textColor="@color/colorRed"
                         android:visibility="gone"/>
 
 

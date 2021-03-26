@@ -8,6 +8,7 @@
     <dimen name="default_card_name_image_width">263dp</dimen>
     <dimen name="default_card_name_image_height">204dp</dimen>
     <dimen name="default_card_name_image_margin_top">40dp</dimen>
+    <dimen name="default_card_min_height">730dp</dimen>
     <!-- Default Card End -->
 
     <!-- Progress Layout -->
@@ -112,5 +113,47 @@
     <dimen name="menu_item_text_size">16sp</dimen>
     <dimen name="menu_item_large_margin_start">16dp</dimen>
     <!-- Menu Layout End -->
+
+    <!-- Add Address / User Layout -->
+    <dimen name="add_title_margin_start">16dp</dimen>
+    <dimen name="add_title_margin_top">8dp</dimen>
+    <dimen name="add_title_text_size">24sp</dimen>
+    <dimen name="add_corner_radius">10dp</dimen>
+    <dimen name="add_input_layout_default_margin">16dp</dimen>
+    <dimen name="add_input_layout_top_margin">24dp</dimen>
+    <dimen name="add_button_height">60dp</dimen>
+    <dimen name="add_button_horizontal_margin">32dp</dimen>
+    <dimen name="add_button_top_margin">24dp</dimen>
+    <dimen name="add_button_text_size">18sp</dimen>
+    <dimen name="add_error_margin_top">3dp</dimen>
+    <!-- Add Address / User Layout End -->
+
+    <!-- Popup update User Layout -->
+    <dimen name="popup_user_padding">15dp</dimen>
+    <dimen name="popup_user_width">360dp</dimen>
+    <dimen name="popup_user_height">500dp</dimen>
+    <dimen name="popup_close_button_size">50dp</dimen>
+    <dimen name="popup_user_data_title_text_size">20sp</dimen>
+    <dimen name="popup_user_data_title_margin_top">16dp</dimen>
+    <dimen name="popup_firstname_input_layout_margin_top">50dp</dimen>
+    <dimen name="popup_input_layout_margin_top">24dp</dimen>
+    <!-- Popup update User Layout End -->
+
+    <!-- Account Layout -->
+    <dimen name="account_title_margin_start">16dp</dimen>
+    <dimen name="account_first_field_margin_top">16dp</dimen>
+    <dimen name="account_field_default_margin">8dp</dimen>
+    <dimen name="account_big_title_text_size">20sp</dimen>
+    <dimen name="account_field_text_size">18sp</dimen>
+    <dimen name="account_image_button_width">40dp</dimen>
+    <dimen name="account_user_address_title_margin_top">24dp</dimen>
+    <!-- Account Layout End -->
+
+    <!-- Address Item Layout -->
+    <dimen name="address_item_global_margin">10dp</dimen>
+    <dimen name="address_item_default_margin">8dp</dimen>
+    <dimen name="address_item_default_text_size">18sp</dimen>
+    <dimen name="address_item_delete_button_width">50dp</dimen>
+    <!-- Address Item Layout End -->
 
 </resources>

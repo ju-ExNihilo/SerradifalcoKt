@@ -14,8 +14,11 @@ class ApiHelper(private val apiService: ApiService) {
     // User
     suspend fun getUser(email: String) = apiService.getUser("api","User", email)
     suspend fun createUser(user: HashMap<String, String>) = apiService.createUser(user)
+    suspend fun updateUser(user: HashMap<String, String>) = apiService.updateUser(user)
 
     //Address
     suspend fun getAllAddressByUserId(userId: Int) = apiService.getAllAddressByUserId("api", "AddressByUserId", userId)
-    suspend fun insertAddress(address: HashMap<String, String>) = apiService.insertAddress(address)
+    suspend fun deleteAddressById(addressId: Int, userId: Int) = apiService.deleteAddressById(addressId, userId)
+    suspend fun insertAddress(wayNumber : Int, way : String,  postCode : String, town : String, additionalAddress : String, userId : Int) =
+        apiService.insertAddress(wayNumber, way, postCode, town, additionalAddress, userId)
 }

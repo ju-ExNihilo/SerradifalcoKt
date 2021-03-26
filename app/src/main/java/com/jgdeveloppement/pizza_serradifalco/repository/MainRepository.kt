@@ -43,6 +43,15 @@ class MainRepository(private val apiHelper: ApiHelper) {
         }
     }
 
+    fun updateUser(user: HashMap<String, String>) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data= apiHelper.updateUser(user)))
+        }catch (exception: Exception){
+            emit(Resource.error(data=null,message = exception.message?:"Error Occurred"))
+        }
+    }
+
     //Address
     fun getAllAddressByUserId(userId: Int) = liveData(Dispatchers.IO){
         emit(Resource.loading(data = null))
@@ -53,12 +62,21 @@ class MainRepository(private val apiHelper: ApiHelper) {
         }
     }
 
-    fun insertAddress(address: HashMap<String, String>) = liveData(Dispatchers.IO) {
+    fun insertAddress(wayNumber : Int, way : String,  postCode : String, town : String, additionalAddress : String, userId : Int) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data= apiHelper.insertAddress(address)))
+            emit(Resource.success(data= apiHelper.insertAddress(wayNumber, way, postCode, town, additionalAddress, userId)))
         }catch (exception: Exception){
             emit(Resource.error(data=null,message = exception.message?:"Error Occurred"))
+        }
+    }
+
+    fun deleteAddress(addressId: Int, userId: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = apiHelper.deleteAddressById(addressId, userId)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
 }

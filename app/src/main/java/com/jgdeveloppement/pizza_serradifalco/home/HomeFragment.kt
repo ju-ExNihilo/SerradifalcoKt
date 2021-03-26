@@ -111,6 +111,7 @@ class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
                                 UserData.userLastName = user.lastName
                                 UserData.userId = user.id
                                 UserData.userPhone = user.phone
+                                UserData.userMail = user.email
                             }
                         }
                         Status.ERROR -> {

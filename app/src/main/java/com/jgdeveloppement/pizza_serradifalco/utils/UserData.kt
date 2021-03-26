@@ -7,6 +7,7 @@ object UserData {
     var userFirstName : String? = null
     var userLastName : String? = null
     var userPhone : String? = null
+    var userMail : String? = null
     var shoppingRowList: MutableList<ShoppingRow> = mutableListOf()
 
     fun getNumberProduct(): Int{

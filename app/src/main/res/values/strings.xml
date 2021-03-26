@@ -84,8 +84,44 @@
     <string name="item_price">%1$s $</string>
     <!-- Details String End -->
 
-    <!-- Shopping Basket String -->
+    <!-- Add Address String -->
+    <string-array name="code_post_item">
+        <item>Code Postale</item>
+        <item>83000</item>
+        <item>83100</item>
+        <item>83130</item>
+        <item>83160</item>
+    </string-array>
+    <string name="ajouter_une_adresse">Ajouter une adresse</string>
+    <string name="numero_de_voie">Numéro de voie</string>
+    <string name="voie">Voie</string>
+    <string name="complement_d_adresse">Complément d\'adresse</string>
+    <string name="merci_de_saisir_le_numero_de_la_voie">Merci de saisir le numéro de la voie</string>
+    <string name="merci_de_saisir_la_voie">Merci de saisir la voie</string>
+    <string name="merci_de_saisir_votre_code_postale">Merci de saisir votre code postale</string>
+    <!-- Add Address String End -->
 
-    <!-- Shopping Basket String End -->
+    <!-- Add User String -->
+    <string name="finaliser_l_inscription">Finaliser l\'inscription</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom">Nom</string>
+    <string name="phone">Téléphone</string>
+    <string name="mot_de_passe_pour_le_site_web">Mot de passe pour le site web</string>
+    <string name="confirmer">Confirmer</string>
+    <string name="merci_de_saisir_votre_prenom">Merci de saisir votre Prénom</string>
+    <string name="merci_de_saisir_votre_nom">Merci de saisir votre nom</string>
+    <string name="merci_de_saisir_votre_numero_de_telephone">Merci de saisir votre numéro de téléphone</string>
+    <string name="merci_de_rentrer_un_mot_de_passe_pour_utiliser_le_site_web">Merci de rentrer un mot de passe pour
+        utiliser le site web
+    </string>
+    <string name="mes_coordonnees">Mes Coordonnées :</string>
+    <!-- Add User String End -->
+
+    <!-- Account String -->
+    <string name="account_prenom">Prénom :</string>
+    <string name="account_nom">Nom :</string>
+    <string name="account_phone">Télèphone :</string>
+    <string name="account_address">Mes Adresses :</string>
+    <!-- Account String End -->
 
 </resources>

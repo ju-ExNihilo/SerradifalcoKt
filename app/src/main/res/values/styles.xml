@@ -87,7 +87,7 @@
     </style>
 
     <style name="mySpinnerItemStyle2" >
-        <item name="android:textColor">@color/colorGreen</item>
+        <item name="android:textColor">@color/colorGray2</item>
     </style>
 
 </resources>
