@@ -124,4 +124,15 @@
     <string name="account_address">Mes Adresses :</string>
     <!-- Account String End -->
 
+    <!-- Shopping basket String -->
+    <string name="panier">Panier</string>
+    <string name="total">Total :</string>
+    <!-- Shopping basket String End -->
+
+    <!-- Shopping basket item String -->
+    <string name="taille">Taille :</string>
+    <string name="quantit">Quantité :</string>
+    <string name="shop_item_extra">Suppléments :</string>
+    <!-- Shopping basket item String End -->
+
 </resources>
