@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/shop_item_global_margin"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorTransparent">
 
     <TextView
             android:id="@+id/shop_product_name"

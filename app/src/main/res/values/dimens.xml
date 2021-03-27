@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Default Card -->
-    <dimen name="default_card_margin_top">32dp</dimen>
+    <dimen name="default_card_margin_top">40dp</dimen>
     <dimen name="default_card_elevation">16dp</dimen>
     <dimen name="default_card_pizza_image_height">250dp</dimen>
     <dimen name="default_card_name_image_width">263dp</dimen>

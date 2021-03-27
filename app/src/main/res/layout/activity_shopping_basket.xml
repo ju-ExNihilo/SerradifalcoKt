@@ -35,16 +35,16 @@
 
             <com.google.android.material.card.MaterialCardView
                     android:id="@+id/shopping_basket_default_card"
-                    style="@style/CustomTopCardViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="@dimen/default_card_elevation"
-                    android:minHeight="@dimen/default_card_min_height"
                     android:layout_marginTop="@dimen/default_card_margin_top"
+                    android:minHeight="@dimen/default_card_min_height"
+                    app:cardElevation="@dimen/default_card_elevation"
+                    style="@style/CustomTopCardViewStyle"
                     app:cardBackgroundColor="@color/grayTransparent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,7 +82,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/shopping_basket_recycler_view"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             tools:listitem="@layout/shopping_basket_item"

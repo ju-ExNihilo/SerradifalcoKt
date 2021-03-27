@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityShoppingBasketBinding
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
+import com.jgdeveloppement.pizza_serradifalco.validateOrder.ValidateOrderActivity
 
 class ShoppingBasketActivity : AppCompatActivity(), ShoppingBasketAdapter.OnShoppingRowClickListener {
 
@@ -24,6 +25,8 @@ class ShoppingBasketActivity : AppCompatActivity(), ShoppingBasketAdapter.OnShop
         initToolbar()
         initData()
         initTotal()
+
+        binding.shoppingBasketValidateButton.setOnClickListener { ValidateOrderActivity.navigate(this) }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

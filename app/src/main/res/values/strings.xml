@@ -135,4 +135,25 @@
     <string name="shop_item_extra">Suppléments :</string>
     <!-- Shopping basket item String End -->
 
+    <!-- Validate Order String -->
+    <string-array name="time_slot">
+        <item>Créneaux Horaire</item>
+        <item>de 18h à 18h30</item>
+        <item>de 18h30 à 19h</item>
+        <item>de 19h à 20h</item>
+        <item>de 20h à 21h</item>
+        <item>de 21h à 22h</item>
+    </string-array>
+    <string name="date">Date</string>
+    <string name="quand">Quand :</string>
+    <string name="leonardo">Leonardo</string>
+    <string name="serradifalco">Serradifalco</string>
+    <string name="restaurants">Restaurants :</string>
+    <string name="message">Message :</string>
+    <string name="take_away_hint_message">Pensez à préciser l\'heure</string>
+    <string name="take_away_date_error">Merci de choisir une date</string>
+    <string name="take_away_time_error">Merci de choisir un créneaux horaire</string>
+    <string name="delivery_message_hint">Laissez nous un message..</string>
+    <!-- Validate Order String End -->
+
 </resources>
