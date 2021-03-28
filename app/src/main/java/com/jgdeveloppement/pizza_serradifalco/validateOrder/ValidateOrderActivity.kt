@@ -9,14 +9,22 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.textfield.TextInputEditText
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityValidateOrderBinding
+import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
+import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
+import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Notification
+import com.jgdeveloppement.pizza_serradifalco.utils.Status
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
+import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
 
 class ValidateOrderActivity : AppCompatActivity() {
 
@@ -58,21 +66,71 @@ class ValidateOrderActivity : AppCompatActivity() {
             activity.finish()
         }
 
-        fun finaliseOrder(activity: FragmentActivity?, context: Context, dateEditText: TextInputEditText, timeSlotSpinner: Spinner, messageEditText: TextInputEditText,
-                          whereGetOrder: String, dateError: TextView, timeError: TextView){
+        fun finaliseOrder(activity: FragmentActivity?, constraintLayout: ConstraintLayout, context: Context, dateEditText: TextInputEditText,
+                          timeSlotSpinner: Spinner, messageEditText: TextInputEditText, isDelivery: String, addressAdditional: String,
+                          whereGetOrder: String, dateError: TextView, timeError: TextView, mainViewModel: MainViewModel, lifecycleOwner: LifecycleOwner){
+
             val date = dateEditText.text.toString()
             val timeSlot = timeSlotSpinner.selectedItem.toString()
             val message = messageEditText.text.toString()
 
             if (date.isNotBlank() && timeSlot != "Créneaux Horaire"){
-                Log.i("DEBUGGG", "whereGetOrder = $whereGetOrder date = $date timeSlot = $timeSlot message = $message")
-                Notification.show(context)
-                UserData.shoppingRowList.clear()
-                activity?.finish()
+
+                val map = HashMap<String, String>()
+                map["user_id"] = UserData.userId.toString()
+                map["order_date"] = date
+                map["order_time"] = timeSlot
+                map["is_delivery"] = isDelivery
+                map["order_price"] = UserData.getShopTotalPrice().toString()
+                map["address"] = whereGetOrder
+                map["address_additional"] = addressAdditional
+                map["order_message"] = message
+
+                insertNewOrder(activity, context, constraintLayout, mainViewModel, map, lifecycleOwner)
+
             }else{
                 if (date.isBlank()) dateError.visibility = View.VISIBLE else dateError.visibility = View.GONE
                 if (timeSlot == "Créneaux Horaire")timeError.visibility = View.VISIBLE else timeError.visibility = View.GONE
             }
+        }
+
+        private fun insertNewOrder(activity: FragmentActivity?, context: Context, constraintLayout: ConstraintLayout,
+                                   mainViewModel: MainViewModel, order: HashMap<String, String>, lifecycleOwner: LifecycleOwner){
+
+            mainViewModel.insertNewOrder(order).observe(lifecycleOwner,{
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            it.data?.let { it1 -> insertShoppingRow(activity, context, constraintLayout, it1, mainViewModel, lifecycleOwner)}
+                        }
+                        Status.ERROR -> { }
+                        Status.LOADING -> { constraintLayout.visibility = View.VISIBLE }
+                    }
+                }
+            })
+        }
+
+
+
+        private fun insertShoppingRow(activity: FragmentActivity?, context: Context,
+                                      constraintLayout: ConstraintLayout, orderId: Int, mainViewModel: MainViewModel, lifecycleOwner: LifecycleOwner){
+
+            mainViewModel.insertShoppingRow(orderId, UserData.shoppingRowList).observe(lifecycleOwner,{
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            it.data?.let { shop ->
+                                shop.forEach{ it1 ->  Log.i("DEBUGGG", it1.toString()) }
+                                Notification.show(context)
+                                UserData.shoppingRowList.clear()
+                                activity?.finish()
+                            }
+                        }
+                        Status.ERROR -> { Log.i("DEBUGGG", it.message) }
+                        Status.LOADING -> { constraintLayout.visibility = View.VISIBLE }
+                    }
+                }
+            })
         }
     }
 }

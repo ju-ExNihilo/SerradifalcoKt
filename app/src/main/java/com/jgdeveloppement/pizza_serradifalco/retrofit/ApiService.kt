@@ -1,9 +1,6 @@
 package com.jgdeveloppement.pizza_serradifalco.retrofit
 
-import com.jgdeveloppement.pizza_serradifalco.models.Address
-import com.jgdeveloppement.pizza_serradifalco.models.Product
-import com.jgdeveloppement.pizza_serradifalco.models.Settings
-import com.jgdeveloppement.pizza_serradifalco.models.User
+import com.jgdeveloppement.pizza_serradifalco.models.*
 import okhttp3.ResponseBody
 import retrofit2.http.*
 
@@ -48,4 +45,13 @@ interface ApiService{
     suspend fun insertAddress(@Field("address_number") wayNumber : Int, @Field("address_way") way : String,
                               @Field("address_post_code") postCode : String, @Field("address_town") town : String,
                               @Field("address_additional") additionalAddress : String, @Field("user_id") userId : Int): List<Address>
+
+    //Order
+    @FormUrlEncoded
+    @POST("/index.php?action=api&type=InsertOrderApi")
+    suspend fun insertNewOrder(@FieldMap body: HashMap<String, String>): Int
+
+    @FormUrlEncoded
+    @POST("/index.php?action=api&type=InsertShopRowApi")
+    suspend fun insertShoppingRow(@Field("order_id") orderId : Int, @Field("shop_list") shopList : List<ShoppingRow>): List<ShoppingRow>
 }

@@ -1,6 +1,7 @@
 package com.jgdeveloppement.pizza_serradifalco.repository
 
 import androidx.lifecycle.liveData
+import com.jgdeveloppement.pizza_serradifalco.models.ShoppingRow
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.retrofit.Resource
 import kotlinx.coroutines.Dispatchers
@@ -75,6 +76,25 @@ class MainRepository(private val apiHelper: ApiHelper) {
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(data = apiHelper.deleteAddressById(addressId, userId)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    //Order
+    fun insertNewOrder(order: HashMap<String, String>) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = apiHelper.insertNewOrder(order)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun insertShoppingRow(orderId: Int, shopList : List<ShoppingRow>) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = apiHelper.insertShoppingRow(orderId, shopList)))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }

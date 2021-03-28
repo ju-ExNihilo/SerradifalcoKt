@@ -60,8 +60,9 @@ class DeliveryFragment : Fragment() {
     private fun validateOrder(){
         val addressId = binding.radioGroupAddress.checkedRadioButtonId
         val address = binding.radioGroupAddress.findViewById<RadioButton>(addressId).text.toString()
-        ValidateOrderActivity.finaliseOrder(activity, requireContext(), binding.deliveryDateEditText, binding.deliveryTimeSlotSpinner,
-            binding.messageEditText, address, binding.deliveryDateError, binding.deliveryTimeError)
+        val additionalAddress = binding.radioGroupAddress.findViewById<RadioButton>(addressId).tag.toString()
+        ValidateOrderActivity.finaliseOrder(activity, binding.deliveryProgressLayout, requireContext(), binding.deliveryDateEditText, binding.deliveryTimeSlotSpinner,
+            binding.messageEditText, "true", additionalAddress, address, binding.deliveryDateError, binding.deliveryTimeError, mainViewModel, viewLifecycleOwner)
     }
 
     private fun getAddressList(){
@@ -78,7 +79,7 @@ class DeliveryFragment : Fragment() {
                                     radioButton.setTextColor(context!!.getColor(R.color.colorWhite))
                                     radioButton.buttonTintList = ColorStateList.valueOf(context!!.getColor(R.color.colorWhite))
                                     radioButton.textSize = 15F
-                                    radioButton.tag = address.id
+                                    radioButton.tag = address.additionalAddress
                                     binding.radioGroupAddress.addView(radioButton)
                                 }
                                 if (addressList.isNotEmpty()) binding.radioGroupAddress.check(1)

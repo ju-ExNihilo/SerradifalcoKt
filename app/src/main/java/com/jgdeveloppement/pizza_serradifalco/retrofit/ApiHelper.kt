@@ -1,5 +1,7 @@
 package com.jgdeveloppement.pizza_serradifalco.retrofit
 
+import com.jgdeveloppement.pizza_serradifalco.models.ShoppingRow
+
 
 class ApiHelper(private val apiService: ApiService) {
 
@@ -21,4 +23,8 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun deleteAddressById(addressId: Int, userId: Int) = apiService.deleteAddressById(addressId, userId)
     suspend fun insertAddress(wayNumber : Int, way : String,  postCode : String, town : String, additionalAddress : String, userId : Int) =
         apiService.insertAddress(wayNumber, way, postCode, town, additionalAddress, userId)
+
+    //Order
+    suspend fun insertNewOrder(order: HashMap<String, String>) = apiService.insertNewOrder(order)
+    suspend fun insertShoppingRow(orderId: Int, shopList : List<ShoppingRow>) = apiService.insertShoppingRow(orderId, shopList)
 }
