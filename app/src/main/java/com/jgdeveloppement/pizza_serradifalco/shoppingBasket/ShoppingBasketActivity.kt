@@ -43,7 +43,7 @@ class ShoppingBasketActivity : AppCompatActivity(), ShoppingBasketAdapter.OnShop
     }
 
     private fun initData(){
-        binding.shoppingBasketRecyclerView.adapter = ShoppingBasketAdapter(UserData.shoppingRowList, this)
+        binding.shoppingBasketRecyclerView.adapter = ShoppingBasketAdapter(this, UserData.shoppingRowList, this)
     }
 
     private fun initTotal(){

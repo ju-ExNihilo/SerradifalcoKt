@@ -18,4 +18,15 @@ data class ShoppingRow(
     var quantity: Int = 0,
     @SerializedName("product_price")
     @Expose
-    var price: Double = 0.0)
+    var price: Double = 0.0){
+
+    override fun toString(): String {
+        return "\n{\n" +
+                "\"product_name\":\"${this.productName}\",\n" +
+                "\"product_size\":\"${this.size}\",\n" +
+                "\"extra\":\"${this.extra}\",\n" +
+                "\"quantity\":\"${this.quantity}\",\n" +
+                "\"price\":\"${this.price}\"\n" +
+                "}"
+    }
+}

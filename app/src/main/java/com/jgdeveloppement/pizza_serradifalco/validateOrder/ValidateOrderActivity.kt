@@ -25,6 +25,7 @@ import com.jgdeveloppement.pizza_serradifalco.utils.Notification
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
+import org.json.JSONArray
 
 class ValidateOrderActivity : AppCompatActivity() {
 
@@ -66,19 +67,15 @@ class ValidateOrderActivity : AppCompatActivity() {
             activity.finish()
         }
 
-        fun finaliseOrder(activity: FragmentActivity?, constraintLayout: ConstraintLayout, context: Context, dateEditText: TextInputEditText,
-                          timeSlotSpinner: Spinner, messageEditText: TextInputEditText, isDelivery: String, addressAdditional: String,
+        fun finaliseOrder(activity: FragmentActivity?, constraintLayout: ConstraintLayout, context: Context, date: String,
+                          timeSlot: String, message: String, isDelivery: String, addressAdditional: String,
                           whereGetOrder: String, dateError: TextView, timeError: TextView, mainViewModel: MainViewModel, lifecycleOwner: LifecycleOwner){
-
-            val date = dateEditText.text.toString()
-            val timeSlot = timeSlotSpinner.selectedItem.toString()
-            val message = messageEditText.text.toString()
 
             if (date.isNotBlank() && timeSlot != "Créneaux Horaire"){
 
                 val map = HashMap<String, String>()
                 map["user_id"] = UserData.userId.toString()
-                map["order_date"] = date
+                map["order_date"] = date.toString()
                 map["order_time"] = timeSlot
                 map["is_delivery"] = isDelivery
                 map["order_price"] = UserData.getShopTotalPrice().toString()
@@ -103,7 +100,7 @@ class ValidateOrderActivity : AppCompatActivity() {
                         Status.SUCCESS -> {
                             it.data?.let { it1 -> insertShoppingRow(activity, context, constraintLayout, it1, mainViewModel, lifecycleOwner)}
                         }
-                        Status.ERROR -> { }
+                        Status.ERROR -> { Log.i("DEBUGGG", it.message) }
                         Status.LOADING -> { constraintLayout.visibility = View.VISIBLE }
                     }
                 }
@@ -115,12 +112,12 @@ class ValidateOrderActivity : AppCompatActivity() {
         private fun insertShoppingRow(activity: FragmentActivity?, context: Context,
                                       constraintLayout: ConstraintLayout, orderId: Int, mainViewModel: MainViewModel, lifecycleOwner: LifecycleOwner){
 
-            mainViewModel.insertShoppingRow(orderId, UserData.shoppingRowList).observe(lifecycleOwner,{
+            Log.i("DEBUGGG", UserData.shoppingRowList.toString())
+            mainViewModel.insertShoppingRow(orderId, UserData.shoppingRowList.toString()).observe(lifecycleOwner,{
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
-                            it.data?.let { shop ->
-                                shop.forEach{ it1 ->  Log.i("DEBUGGG", it1.toString()) }
+                            it.data?.let { shop -> Log.i("DEBUGGG", shop.toString())
                                 Notification.show(context)
                                 UserData.shoppingRowList.clear()
                                 activity?.finish()

@@ -1,5 +1,6 @@
 package com.jgdeveloppement.pizza_serradifalco.shoppingBasket
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.models.ShoppingRow
 
-class ShoppingBasketAdapter(private val shoppingRowList: List<ShoppingRow>, private val onShoppingRowClickListener: OnShoppingRowClickListener)
+class ShoppingBasketAdapter(private val context: Context,
+                            private val shoppingRowList: List<ShoppingRow>,
+                            private val onShoppingRowClickListener: OnShoppingRowClickListener)
     : RecyclerView.Adapter<ShoppingBasketAdapter.ViewHolder>() {
 
     interface OnShoppingRowClickListener{
@@ -29,14 +32,15 @@ class ShoppingBasketAdapter(private val shoppingRowList: List<ShoppingRow>, priv
 
         holder.itemName.text = currentShoppingRow.productName
         holder.itemSize.text = currentShoppingRow.size
-        holder.itemPrice.text = "${currentShoppingRow.price} $"
+        holder.itemPrice.text = context.getString(R.string.set_price, String.format("%.1f", currentShoppingRow.price))
         holder.itemExtra.text = currentShoppingRow.extra
         holder.spinnerQuantity.setSelection(currentShoppingRow.quantity-1)
 
         holder.spinnerQuantity.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 onShoppingRowClickListener.onSpinnerQuantityChangeListener(position, p2)
-                holder.itemPrice.text = "${currentShoppingRow.price * (p2+1)} $"
+                val finalPrice = currentShoppingRow.price * (p2+1)
+                holder.itemPrice.text = context.getString(R.string.set_price, String.format("%.1f", finalPrice))
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }

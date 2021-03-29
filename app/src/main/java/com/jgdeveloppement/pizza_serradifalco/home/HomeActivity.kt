@@ -1,6 +1,7 @@
 package com.jgdeveloppement.pizza_serradifalco.home
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -87,7 +88,8 @@ class HomeActivity : AppCompatActivity(){
 
         val call = binding.bottomNavigationView.menu.findItem(R.id.call)
         call.setOnMenuItemClickListener {
-            Log.i("DEBUGGG", "Start call Intent")
+           val callIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:0494218034"))
+            startActivity(callIntent)
             true
         }
     }

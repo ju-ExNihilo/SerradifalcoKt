@@ -14,6 +14,7 @@ import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.account.AddressAdapter
 import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentDeliveryBinding
 import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Notification
@@ -48,7 +49,7 @@ class DeliveryFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
+        mainViewModel = ViewModelProviders.of(this, Injection.provideMainViewModelFactory()).get(
             MainViewModel::class.java)
     }
 
@@ -61,8 +62,10 @@ class DeliveryFragment : Fragment() {
         val addressId = binding.radioGroupAddress.checkedRadioButtonId
         val address = binding.radioGroupAddress.findViewById<RadioButton>(addressId).text.toString()
         val additionalAddress = binding.radioGroupAddress.findViewById<RadioButton>(addressId).tag.toString()
-        ValidateOrderActivity.finaliseOrder(activity, binding.deliveryProgressLayout, requireContext(), binding.deliveryDateEditText, binding.deliveryTimeSlotSpinner,
-            binding.messageEditText, "true", additionalAddress, address, binding.deliveryDateError, binding.deliveryTimeError, mainViewModel, viewLifecycleOwner)
+
+        ValidateOrderActivity.finaliseOrder(activity, binding.deliveryProgressLayout, requireContext(), binding.deliveryDateEditText.text.toString(),
+                binding.deliveryTimeSlotSpinner.selectedItem.toString(), binding.messageEditText.text.toString(), "true",
+                additionalAddress, address, binding.deliveryDateError, binding.deliveryTimeError, mainViewModel, viewLifecycleOwner)
     }
 
     private fun getAddressList(){

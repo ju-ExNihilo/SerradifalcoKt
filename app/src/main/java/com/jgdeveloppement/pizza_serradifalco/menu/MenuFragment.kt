@@ -17,9 +17,11 @@ import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentMenuBinding
 import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.ProductViewModel
 
@@ -47,15 +49,14 @@ class MenuFragment : Fragment(), MenuAdapter.OnProductShoppingClicked {
         setupViewModel()
         setTabListener()
         if (arguments != null){
-            selectedName = requireArguments().getString("cardName")
+            selectedName = requireArguments().getString(Utils.CARD_NAME)
 
         }
         setSelectedItem()
     }
 
     private fun setupViewModel() {
-        productViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
-            ProductViewModel::class.java)
+        productViewModel = ViewModelProviders.of(this, Injection.provideProductViewModelFactory()).get(ProductViewModel::class.java)
     }
 
     private fun getProductList(type: String){
@@ -68,7 +69,7 @@ class MenuFragment : Fragment(), MenuAdapter.OnProductShoppingClicked {
                     }
                     Status.ERROR -> {
                         binding.menuProgressLayout.visibility = View.GONE
-                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                        Utils.showSnackBar(binding.fragmentMenuLayout, getString(R.string.error_occurred))
                     }
                     Status.LOADING -> {
                         binding.menuProgressLayout.visibility = View.VISIBLE
@@ -80,20 +81,20 @@ class MenuFragment : Fragment(), MenuAdapter.OnProductShoppingClicked {
 
     private fun setTabLayout(selectedItem: Int){
         val tabLayout = binding.tabLayoutMenu
-        tabLayout.addTab(tabLayout.newTab().setText("Tomate") , 0, isSelectedItem(selectedItem, 0))
-        tabLayout.addTab(tabLayout.newTab().setText("Blanche"), 1, isSelectedItem(selectedItem, 1))
-        tabLayout.addTab(tabLayout.newTab().setText("Premium"), 2, isSelectedItem(selectedItem, 2))
-        tabLayout.addTab(tabLayout.newTab().setText("Dessert"), 3, isSelectedItem(selectedItem, 3))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.nos_pizzas_tomate)) , 0, isSelectedItem(selectedItem, 0))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.nos_pizzas_blanche)), 1, isSelectedItem(selectedItem, 1))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.nos_pizzas_preniun)), 2, isSelectedItem(selectedItem, 2))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.nos_desserts)), 3, isSelectedItem(selectedItem, 3))
     }
 
     private fun isSelectedItem(selectedItem: Int, position: Int): Boolean = selectedItem == position
 
     private fun setSelectedItem(){
         when(selectedName){
-            "Tomate" -> setTabLayout(0)
-            "Blanche" -> setTabLayout(1)
-            "Premium" -> setTabLayout(2)
-            "Dessert" -> setTabLayout(3)
+            getString(R.string.nos_pizzas_tomate) -> setTabLayout(0)
+            getString(R.string.nos_pizzas_blanche) -> setTabLayout(1)
+            getString(R.string.nos_pizzas_preniun) -> setTabLayout(2)
+            getString(R.string.nos_desserts) -> setTabLayout(3)
             else -> setTabLayout(0)
 
         }
@@ -104,10 +105,10 @@ class MenuFragment : Fragment(), MenuAdapter.OnProductShoppingClicked {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(binding.tabLayoutMenu.selectedTabPosition){
-                    0 -> getProductList("Tomate")
-                    1 -> getProductList("Blanche")
-                    2 -> getProductList("Prenium")
-                    3 -> getProductList("Dessert")
+                    0 -> getProductList(getString(R.string.nos_pizzas_tomate))
+                    1 -> getProductList(getString(R.string.nos_pizzas_blanche))
+                    2 -> getProductList(getString(R.string.nos_pizzas_preniun))
+                    3 -> getProductList(getString(R.string.nos_desserts))
                 }
             }
 
@@ -121,7 +122,7 @@ class MenuFragment : Fragment(), MenuAdapter.OnProductShoppingClicked {
     override fun onClickedProductShop(productId: Int) {
         val navOptions: NavOptions = NavOptions.Builder().setPopUpTo(R.id.detailsFragment, true).build()
         val bundle = Bundle()
-        bundle.putInt("productId", productId)
+        bundle.putInt(Utils.PRODUCT_ID, productId)
         navController?.navigate(R.id.detailsFragment, bundle, navOptions)
     }
 }

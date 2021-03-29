@@ -1,20 +1,19 @@
 package com.jgdeveloppement.pizza_serradifalco.addAddress
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
+import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityAddAddressBinding
-import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
-import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
-import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
-import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
 
 class AddAddressActivity : AppCompatActivity() {
@@ -29,7 +28,6 @@ class AddAddressActivity : AppCompatActivity() {
 
         setupViewModel()
         initToolbar()
-
         addAddress()
     }
 
@@ -47,8 +45,7 @@ class AddAddressActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
-            MainViewModel::class.java)
+        mainViewModel = ViewModelProviders.of(this, Injection.provideMainViewModelFactory()).get(MainViewModel::class.java)
     }
 
     private fun addAddress(){
@@ -58,27 +55,24 @@ class AddAddressActivity : AppCompatActivity() {
             val way = binding.wayEditText.text.toString()
             val postcode = binding.postCodeSpinner.selectedItem.toString()
             var additional = binding.additionalEditText.text.toString()
-            additional = if (additional.isBlank()) "none" else additional
+            additional = if (additional.isBlank()) Utils.NONE else additional
 
             if (numberWay.isNotBlank() && way.isNotBlank() && postcode.isNotBlank()){
-                if (postcode == "83160" || postcode == "83000" || postcode == "83100" || postcode == "83130"){
+                if (postcode == Utils.POST_CODE_83160 || postcode == Utils.POST_CODE_83000 || postcode == Utils.POST_CODE_83100 || postcode == Utils.POST_CODE_83130){
                     val town = when(postcode){
-                        "83160" -> "La Valette"
-                        "83130" -> "La Garde"
-                        else -> "Toulon"
+                        Utils.POST_CODE_83160 -> getString(R.string.la_valette)
+                        Utils.POST_CODE_83130 -> getString(R.string.la_garde)
+                        else -> getString(R.string.toulon)
                     }
                     UserData.userId?.let { it1 -> insertNewAddress(numberWay.toInt(), way, postcode, town, additional, it1) }
                 }else{
-                    binding.postCodeError.text = "Merci de choisir un code postale dans la liste"
                     binding.postCodeError.visibility = View.VISIBLE
                 }
             }else{
-                if (numberWay.isBlank()) binding.numberWayError.visibility = View.VISIBLE else binding.numberWayError.visibility = View.GONE
-                if (way.isBlank()) binding.wayError.visibility = View.VISIBLE else binding.wayError.visibility = View.GONE
-                if (postcode.isBlank()) binding.postCodeError.visibility = View.VISIBLE else binding.postCodeError.visibility = View.GONE
+                Utils.setVisibilityError(numberWay, binding.numberWayError)
+                Utils.setVisibilityError(way, binding.wayError)
+                Utils.setVisibilityError(postcode, binding.postCodeError)
             }
-
-
         }
     }
 
@@ -89,7 +83,10 @@ class AddAddressActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         finish()
                     }
-                    Status.ERROR -> {}
+                    Status.ERROR -> {
+                        binding.addAddressProgressLayout.visibility = View.GONE
+                        Utils.showSnackBar(binding.addAddressLayout, getString(R.string.error_occurred))
+                    }
                     Status.LOADING -> {
                         binding.addAddressProgressLayout.visibility = View.VISIBLE
                     }
@@ -97,7 +94,6 @@ class AddAddressActivity : AppCompatActivity() {
             }
         })
     }
-
 
     companion object {
         /** Used to navigate to this activity  */

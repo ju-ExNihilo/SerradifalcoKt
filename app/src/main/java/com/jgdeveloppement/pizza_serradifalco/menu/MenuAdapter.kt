@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
 import com.jgdeveloppement.pizza_serradifalco.models.Product
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
+import okhttp3.internal.Util
 
 class MenuAdapter(private val context: HomeActivity,
                   private val productList: List<Product>,
@@ -29,25 +31,25 @@ class MenuAdapter(private val context: HomeActivity,
         val currentProduct = productList[position]
 
         when(currentProduct.category) {
-            "PREMIUM" -> {
+            Utils.PREMIUM_CATEGORY -> {
                 holder.itemName.setTextColor(context.getColor(R.color.colorGreen))
                 holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorGreen))
                 holder.itemLargePrice.setTextColor(context.getColor(R.color.colorGreen))
                 holder.addButton.setImageResource(R.drawable.ic_shopping_premium)
             }
-            "BLANCHE" -> {
+            Utils.BLANCHE_CATEGORY -> {
                 holder.itemName.setTextColor(context.getColor(R.color.colorBlanche))
                 holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorBlanche))
                 holder.itemLargePrice.setTextColor(context.getColor(R.color.colorBlanche))
                 holder.addButton.setImageResource(R.drawable.ic_shopping_blanche)
             }
-            "TOMATE" -> {
+            Utils.TOMATE_CATEGORY -> {
                 holder.itemName.setTextColor(context.getColor(R.color.colorTomate))
                 holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorTomate))
                 holder.itemLargePrice.setTextColor(context.getColor(R.color.colorTomate))
                 holder.addButton.setImageResource(R.drawable.ic_shopping_tomato)
             }
-            "DESSERT" -> {
+            Utils.DESSERT_CATEGORY -> {
                 holder.itemName.setTextColor(context.getColor(R.color.colorDessert))
                 holder.itemMiddlePrice.setTextColor(context.getColor(R.color.colorDessert))
                 holder.itemLargePrice.setTextColor(context.getColor(R.color.colorDessert))
@@ -58,12 +60,12 @@ class MenuAdapter(private val context: HomeActivity,
 
         holder.itemName.text = currentProduct.name.replace("_", " ")
         holder.itemComponent.text = currentProduct.component
-        holder.itemMiddlePrice.text = currentProduct.mediumPrice.toString() + " $"
+        holder.itemMiddlePrice.text = context.getString(R.string.set_price, String.format("%.1f", currentProduct.mediumPrice))
 
         if (currentProduct.largePrice == 0.0){
-            holder.itemLargePrice.text =  "N/A"
+            holder.itemLargePrice.text =  context.getString(R.string.na_price)
         }else{
-            holder.itemLargePrice.text = currentProduct.largePrice.toString() + " $"
+            holder.itemLargePrice.text = context.getString(R.string.set_price, String.format("%.1f", currentProduct.largePrice))
         }
 
 

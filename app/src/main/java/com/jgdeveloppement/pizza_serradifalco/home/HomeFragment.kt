@@ -20,6 +20,7 @@ import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
 
 import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentHomeBinding
 import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.models.HomeMenuCard
 import com.jgdeveloppement.pizza_serradifalco.models.Product
 import com.jgdeveloppement.pizza_serradifalco.models.Settings
@@ -27,6 +28,7 @@ import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
 
 class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
 
@@ -55,8 +57,7 @@ class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
-            MainViewModel::class.java)
+        mainViewModel = ViewModelProviders.of(this, Injection.provideMainViewModelFactory()).get(MainViewModel::class.java)
     }
 
     private fun initCardMenu() {
@@ -69,7 +70,7 @@ class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
                     }
                     Status.ERROR -> {
                         binding.homeProgressLayout.visibility = View.GONE
-                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                        Utils.showSnackBar(binding.fragmentHomeLayout, getString(R.string.error_occurred))
                     }
                     Status.LOADING -> {
                         binding.homeProgressLayout.visibility = View.VISIBLE
@@ -89,7 +90,7 @@ class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
                     }
                     Status.ERROR -> {
                         binding.homeProgressLayout.visibility = View.GONE
-                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                        Utils.showSnackBar(binding.fragmentHomeLayout, getString(R.string.error_occurred))
                     }
                     Status.LOADING -> {
                         binding.homeProgressLayout.visibility = View.VISIBLE
@@ -138,20 +139,20 @@ class HomeFragment : Fragment(), MenuCardAdapter.OnCardMenuClicked {
     private fun navigateToPizzaDay(pizzaId: Int){
         val navOptions: NavOptions = NavOptions.Builder().setPopUpTo(R.id.detailsFragment, true).build()
         val bundle = Bundle()
-        bundle.putInt("productId", pizzaId)
+        bundle.putInt(Utils.PRODUCT_ID, pizzaId)
         navController?.navigate(R.id.detailsFragment, bundle, navOptions)
     }
 
     private fun initMenuCard(setting: Settings){
-        val menuCardList = listOf(HomeMenuCard("Premium", setting.premiumUrl), HomeMenuCard("Tomate", setting.tomatoUrl),
-                HomeMenuCard("Blanche", setting.blancheUrl),HomeMenuCard("Dessert", setting.dessert1Url))
+        val menuCardList = listOf(HomeMenuCard(getString(R.string.nos_pizzas_preniun), setting.premiumUrl), HomeMenuCard(getString(R.string.nos_pizzas_tomate), setting.tomatoUrl),
+                HomeMenuCard(getString(R.string.nos_pizzas_blanche), setting.blancheUrl),HomeMenuCard(getString(R.string.nos_desserts), setting.dessert1Url))
         binding.homeRecyclerView.adapter = MenuCardAdapter(context as HomeActivity, menuCardList, this)
     }
 
     override fun onClickedCardMenu(cardName: String) {
         val navOptions: NavOptions = NavOptions.Builder().setPopUpTo(R.id.menuFragment, true).build()
         val bundle = Bundle()
-        bundle.putString("cardName", cardName)
+        bundle.putString(Utils.CARD_NAME, cardName)
         navController?.navigate(R.id.menuFragment, bundle, navOptions)
     }
 

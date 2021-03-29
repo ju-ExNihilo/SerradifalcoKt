@@ -41,13 +41,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.serradifalcoButton.setOnClickListener{
             latLng = LatLng(43.1395408, 5.9947193)
-            markerTitle = "Serradifalco"
+            markerTitle = getString(R.string.serradifalco)
             mapFragment?.getMapAsync(this)
         }
 
         binding.leonardoButton.setOnClickListener {
             latLng = LatLng(43.1361416, 5.9804128)
-            markerTitle = "Leonardo Pizza"
+            markerTitle = getString(R.string.leonardo)
             mapFragment?.getMapAsync(this)
         }
 

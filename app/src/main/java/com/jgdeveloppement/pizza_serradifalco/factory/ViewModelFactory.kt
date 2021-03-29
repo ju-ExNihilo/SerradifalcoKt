@@ -8,14 +8,23 @@ import com.jgdeveloppement.pizza_serradifalco.repository.ProductRepository
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.ProductViewModel
 
-class ViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvider.Factory {
+class ViewModelFactory(
+    private val mainRepository: MainRepository?,
+    private val productRepository: ProductRepository?)
+    : ViewModelProvider.Factory {
+
+    constructor(mainRepository: MainRepository) : this(mainRepository, null)
+    constructor(productRepository: ProductRepository) : this(null, productRepository)
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(MainRepository(apiHelper)) as T
+            return mainRepository?.let { MainViewModel(it) } as T
+
         }else if (modelClass.isAssignableFrom(ProductViewModel::class.java)){
-            return ProductViewModel(ProductRepository(apiHelper)) as T
+            return productRepository?.let { ProductViewModel(it) } as T
         }
+
         throw IllegalArgumentException("Unknown class name")
     }
 }

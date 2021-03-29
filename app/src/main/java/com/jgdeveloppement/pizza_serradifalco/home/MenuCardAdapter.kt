@@ -32,19 +32,19 @@ class MenuCardAdapter(private val context: HomeActivity,
         holder.cardNameItem.text = currentCard.name
 
         when (currentCard.name) {
-            "Premium" -> {
+            context.getString(R.string.nos_pizzas_preniun) -> {
                 holder.cardNameItem.setTextColor(context.getColor(R.color.colorGreen))
                 holder.cardNameItem.background = context.getDrawable(R.drawable.underline_small_green)
             }
-            "Blanche" -> {
+            context.getString(R.string.nos_pizzas_blanche) -> {
                 holder.cardNameItem.setTextColor(context.getColor(R.color.colorBlanche))
                 holder.cardNameItem.background = context.getDrawable(R.drawable.underline_small_yellow)
             }
-            "Tomate" -> {
+            context.getString(R.string.nos_pizzas_tomate) -> {
                 holder.cardNameItem.setTextColor(context.getColor(R.color.colorTomate))
                 holder.cardNameItem.background = context.getDrawable(R.drawable.underline_small_red)
             }
-            "Dessert" -> {
+            context.getString(R.string.nos_desserts) -> {
                 holder.cardNameItem.setTextColor(context.getColor(R.color.colorWhite))
                 holder.cardNameItem.background = context.getDrawable(R.drawable.underline_small_white)
             }

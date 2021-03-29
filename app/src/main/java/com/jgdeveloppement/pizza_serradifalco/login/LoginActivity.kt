@@ -2,7 +2,6 @@ package com.jgdeveloppement.pizza_serradifalco.login
 
 import android.app.Activity
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -18,8 +17,8 @@ import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityLoginBinding
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
 import com.jgdeveloppement.pizza_serradifalco.networking.ConnexionInternet
-import com.jgdeveloppement.pizza_serradifalco.utils.Constantes
-import com.jgdeveloppement.pizza_serradifalco.utils.Constantes.RC_SIGN_IN
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils.RC_SIGN_IN
 
 class LoginActivity : AppCompatActivity() {
 
@@ -47,14 +46,14 @@ class LoginActivity : AppCompatActivity() {
                 HomeActivity.navigate(this)
             }else{
                 when (response?.error?.errorCode) {
-                    ErrorCodes.NO_NETWORK -> showSnackBar(binding.loginLayout, getString(R.string.error_no_internet))
-                    ErrorCodes.UNKNOWN_ERROR -> showSnackBar(binding.loginLayout, getString(R.string.error_unknown_error))
-                    else -> showSnackBar(binding.loginLayout, getString(R.string.error_authentication_canceled))
+                    ErrorCodes.NO_NETWORK -> Utils.showSnackBar(binding.loginLayout, getString(R.string.error_no_internet))
+                    ErrorCodes.UNKNOWN_ERROR -> Utils.showSnackBar(binding.loginLayout, getString(R.string.error_unknown_error))
+                    else -> Utils.showSnackBar(binding.loginLayout, getString(R.string.error_authentication_canceled))
                 }
             }
 
         }else{
-            showSnackBar(binding.loginLayout, getString(R.string.error_authentication_canceled))
+            Utils.showSnackBar(binding.loginLayout, getString(R.string.error_authentication_canceled))
         }
     }
 
@@ -69,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else{
                     loginLayout(true)
-                    showSnackBar(binding.loginLayout, getString(R.string.error_no_internet))
+                    Utils.showSnackBar(binding.loginLayout, getString(R.string.error_no_internet))
                 }
             }
         }, (3 * 1000).toLong())
@@ -105,10 +104,6 @@ class LoginActivity : AppCompatActivity() {
     private fun loginLayout(visibility: Boolean){
         if (visibility) binding.loginProgressLayout.visibility = View.GONE
         else binding.loginProgressLayout.visibility = View.VISIBLE
-    }
-
-    private fun showSnackBar(view: View?, message: String) {
-        Snackbar.make(view!!, message, Snackbar.LENGTH_SHORT).show()
     }
 
     companion object {

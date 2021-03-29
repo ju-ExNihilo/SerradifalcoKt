@@ -91,7 +91,7 @@ class MainRepository(private val apiHelper: ApiHelper) {
         }
     }
 
-    fun insertShoppingRow(orderId: Int, shopList : List<ShoppingRow>) = liveData(Dispatchers.IO) {
+    fun insertShoppingRow(orderId: Int, shopList : String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(data = apiHelper.insertShoppingRow(orderId, shopList)))

@@ -14,6 +14,7 @@ import com.jgdeveloppement.pizza_serradifalco.addAddress.AddAddressActivity
 import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentAccountBinding
 import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.menu.MenuAdapter
 import com.jgdeveloppement.pizza_serradifalco.models.Address
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
@@ -56,8 +57,7 @@ class AccountFragment : Fragment(), AddressAdapter.OnClickDeleteButton, UserPopu
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
-            MainViewModel::class.java)
+        mainViewModel = ViewModelProviders.of(this, Injection.provideMainViewModelFactory()).get(MainViewModel::class.java)
     }
 
     private fun getAddressList(){

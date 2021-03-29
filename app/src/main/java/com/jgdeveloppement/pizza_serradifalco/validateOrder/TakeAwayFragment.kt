@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.FragmentTakeAwayBinding
 import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
 import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
 import com.jgdeveloppement.pizza_serradifalco.utils.Notification
@@ -42,8 +43,7 @@ class TakeAwayFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
-            MainViewModel::class.java)
+        mainViewModel = ViewModelProviders.of(this, Injection.provideMainViewModelFactory()).get(MainViewModel::class.java)
     }
 
     private fun datePicker(){
@@ -53,8 +53,8 @@ class TakeAwayFragment : Fragment() {
 
     private fun validateOrder(){
         val restaurant = if (binding.radioButtonSerradifalco.isChecked) "Serradifalco" else "Leonardo"
-        ValidateOrderActivity.finaliseOrder(activity, binding.takeAwayProgressLayout, requireContext(), binding.takeAwayDateEditText, binding.takeAwayTimeSlotSpinner,
-            binding.takeAwayMessageEditText, "false", "none", restaurant, binding.takeAwayDateError, binding.takeAwayTimeError, mainViewModel, viewLifecycleOwner)
+        ValidateOrderActivity.finaliseOrder(activity, binding.takeAwayProgressLayout, requireContext(), binding.takeAwayDateEditText.text.toString(), binding.takeAwayTimeSlotSpinner.selectedItem.toString(),
+            binding.takeAwayMessageEditText.text.toString(), "false", "none", restaurant, binding.takeAwayDateError, binding.takeAwayTimeError, mainViewModel, viewLifecycleOwner)
 
     }
 }

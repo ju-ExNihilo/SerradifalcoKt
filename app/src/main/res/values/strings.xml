@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Pizza-Serradifalco</string>
-    <string name="app_no_name"></string>
+    <string name="app_no_name"/>
+    <string name="error_occurred">Désolé une erreur est intervenue</string>
 
     <!-- Login String -->
     <string name="pizza_au_feu_de_bois">Pizza Au Feu De Bois</string>
@@ -13,6 +14,10 @@
     <string name="a_le_plaisir_de_vous_annoncer">A le plaisir de vous annoncer</string>
     <string name="leonardo_pizza">LEONARDO PIZZA</string>
     <string name="by">by</string>
+    <string name="nos_pizzas_tomate">Tomate</string>
+    <string name="nos_pizzas_preniun">Premium</string>
+    <string name="nos_pizzas_blanche">Blanche</string>
+    <string name="nos_desserts">Dessert</string>
     <string name="nos_pizzas">Nos Pizzas</string>
     <!-- Home String End -->
 
@@ -33,6 +38,8 @@
     <string name="shopping_for_menu">Shopping</string>
     <string name="found_us_for_menu">Nous Trouver</string>
     <string name="call_us_for_menu">Nous Appeler</string>
+    <string name="set_price">%1$s $</string>
+    <string name="na_price">N/A</string>
     <!-- Menu String End -->
 
     <!-- Pizzeria String -->
@@ -71,6 +78,7 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="no_price">Large : N/A</string>
     <string name="moyenne">Moyenne :</string>
     <string name="large">Large :</string>
     <string name="prix">Prix :</string>
@@ -99,6 +107,9 @@
     <string name="merci_de_saisir_le_numero_de_la_voie">Merci de saisir le numéro de la voie</string>
     <string name="merci_de_saisir_la_voie">Merci de saisir la voie</string>
     <string name="merci_de_saisir_votre_code_postale">Merci de saisir votre code postale</string>
+    <string name="la_valette">La Valette</string>
+    <string name="la_garde">La Garde</string>
+    <string name="toulon">Toulon</string>
     <!-- Add Address String End -->
 
     <!-- Add User String -->

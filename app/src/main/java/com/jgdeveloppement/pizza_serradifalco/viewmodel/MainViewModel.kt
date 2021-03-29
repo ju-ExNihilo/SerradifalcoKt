@@ -28,6 +28,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     //Order
     fun insertNewOrder(order: HashMap<String, String>) = mainRepository.insertNewOrder(order)
-    fun insertShoppingRow(orderId: Int, shopList : List<ShoppingRow>) = mainRepository.insertShoppingRow(orderId, shopList)
+    fun insertShoppingRow(orderId: Int, shopList : String) = mainRepository.insertShoppingRow(orderId, shopList)
 
 }

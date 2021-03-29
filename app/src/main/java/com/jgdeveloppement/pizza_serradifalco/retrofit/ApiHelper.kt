@@ -26,5 +26,5 @@ class ApiHelper(private val apiService: ApiService) {
 
     //Order
     suspend fun insertNewOrder(order: HashMap<String, String>) = apiService.insertNewOrder(order)
-    suspend fun insertShoppingRow(orderId: Int, shopList : List<ShoppingRow>) = apiService.insertShoppingRow(orderId, shopList)
+    suspend fun insertShoppingRow(orderId: Int, shopList : String) = apiService.insertShoppingRow(orderId, shopList)
 }

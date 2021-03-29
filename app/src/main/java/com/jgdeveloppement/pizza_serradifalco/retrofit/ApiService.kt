@@ -53,5 +53,5 @@ interface ApiService{
 
     @FormUrlEncoded
     @POST("/index.php?action=api&type=InsertShopRowApi")
-    suspend fun insertShoppingRow(@Field("order_id") orderId : Int, @Field("shop_list") shopList : List<ShoppingRow>): List<ShoppingRow>
+    suspend fun insertShoppingRow(@Field("order_id") orderId : Int, @Field("shop_list") shopList : String): ResponseBody
 }

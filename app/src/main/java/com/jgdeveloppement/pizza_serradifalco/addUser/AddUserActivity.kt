@@ -1,22 +1,20 @@
 package com.jgdeveloppement.pizza_serradifalco.addUser
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
+import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.databinding.ActivityAddUserBinding
-import com.jgdeveloppement.pizza_serradifalco.factory.ViewModelFactory
 import com.jgdeveloppement.pizza_serradifalco.home.HomeActivity
-import com.jgdeveloppement.pizza_serradifalco.retrofit.ApiHelper
-import com.jgdeveloppement.pizza_serradifalco.retrofit.RetrofitBuilder
+import com.jgdeveloppement.pizza_serradifalco.injection.Injection
 import com.jgdeveloppement.pizza_serradifalco.utils.Status
 import com.jgdeveloppement.pizza_serradifalco.utils.UserData
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
 import com.jgdeveloppement.pizza_serradifalco.viewmodel.MainViewModel
 
 class AddUserActivity : AppCompatActivity() {
@@ -38,7 +36,7 @@ class AddUserActivity : AppCompatActivity() {
             val map = HashMap<String, String>()
             val firstName = binding.firstNameEditText.text.toString()
             val lastName = binding.lastnameEditText.text.toString()
-            val email = FirebaseAuth.getInstance().currentUser?.email ?: "none"
+            val email = FirebaseAuth.getInstance().currentUser?.email ?: Utils.NONE
             val password = binding.passwordEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
 
@@ -51,10 +49,10 @@ class AddUserActivity : AppCompatActivity() {
                 insertNewUser(map)
 
             }else{
-                if (firstName.isBlank()) binding.firstnameError.visibility = View.VISIBLE else binding.firstnameError.visibility = View.GONE
-                if (lastName.isBlank()) binding.lastnameError.visibility = View.VISIBLE else binding.lastnameError.visibility = View.GONE
-                if (password.isBlank()) binding.passwordError.visibility = View.VISIBLE else binding.passwordError.visibility = View.GONE
-                if (phone.isBlank()) binding.phoneError.visibility = View.VISIBLE else binding.phoneError.visibility = View.GONE
+                Utils.setVisibilityError(firstName, binding.firstnameError)
+                Utils.setVisibilityError(lastName, binding.lastnameError)
+                Utils.setVisibilityError(password, binding.passwordError)
+                Utils.setVisibilityError(phone, binding.phoneError)
             }
         }
     }
@@ -72,7 +70,10 @@ class AddUserActivity : AppCompatActivity() {
                             HomeActivity.navigate(this)
                         }
                     }
-                    Status.ERROR -> {}
+                    Status.ERROR -> {
+                        binding.addUserProgressLayout.visibility = View.GONE
+                        Utils.showSnackBar(binding.addUserLayout, getString(R.string.error_occurred))
+                    }
                     Status.LOADING -> {
                         binding.addUserProgressLayout.visibility = View.VISIBLE
                     }
@@ -82,8 +83,7 @@ class AddUserActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)) ).get(
-            MainViewModel::class.java)
+        mainViewModel = ViewModelProviders.of(this, Injection.provideMainViewModelFactory()).get(MainViewModel::class.java)
     }
 
     companion object {

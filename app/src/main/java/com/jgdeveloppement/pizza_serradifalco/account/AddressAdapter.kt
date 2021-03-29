@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jgdeveloppement.pizza_serradifalco.R
 import com.jgdeveloppement.pizza_serradifalco.models.Address
+import com.jgdeveloppement.pizza_serradifalco.utils.Utils
 
 class AddressAdapter(private val addressList: List<Address>, private val onClickDeleteButton: OnClickDeleteButton) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
 
@@ -28,7 +29,7 @@ class AddressAdapter(private val addressList: List<Address>, private val onClick
         holder.itemPostCode.text = currentAddress.postCode
         holder.itemTown.text = currentAddress.town
 
-        if(currentAddress.additionalAddress == "none"){
+        if(currentAddress.additionalAddress == Utils.NONE){
             holder.itemAdditional.visibility = View.GONE
         }else{
             holder.itemAdditional.text = currentAddress.additionalAddress
