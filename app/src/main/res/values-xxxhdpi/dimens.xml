@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default Card -->
+    <dimen name="default_card_margin_top">40dp</dimen>
+    <dimen name="default_card_name_image_margin_top">40dp</dimen>
+    <dimen name="default_card_pizza_image_height">300dp</dimen>
+    <dimen name="default_card_name_image_height">250dp</dimen>
+    <!-- Default Card End -->
+
+    <!-- Add Address / User Layout -->
+    <dimen name="add_title_text_size">24sp</dimen>
+    <dimen name="add_button_text_size">18sp</dimen>
+    <dimen name="add_input_text_size">18sp</dimen>
+    <!-- Add Address / User Layout End -->
+
+    <!-- Map Layout -->
+    <dimen name="map_button_text_size">14sp</dimen>
+    <dimen name="map_button_margin">8dp</dimen>
+    <!-- Map Layout End -->
+
+    <!-- Menu Layout -->
+    <dimen name="menu_item_name_text_size">22sp</dimen>
+    <dimen name="menu_item_component_text_size">14sp</dimen>
+    <dimen name="menu_item_text_size">16sp</dimen>
+    <!-- Menu Layout End -->
+
+    <!-- Shopping Basket Layout -->
+    <dimen name="shopping_basket_total_price_text_size">20sp</dimen>
+    <dimen name="shopping_basket_recycler_horizontal_margin">8dp</dimen>
+    <!-- Shopping Basket Layout End -->
+
+    <!-- Shopping Basket Item Layout -->
+    <dimen name="shop_item_name_text_size">18sp</dimen>
+    <dimen name="shop_item_delete_button_margin">8dp</dimen>
+    <dimen name="shop_product_size_text_size">14sp</dimen>
+    <dimen name="shop_product_delete_button_width">40dp</dimen>
+    <dimen name="shop_product_quantity_title_text_size">14sp</dimen>
+    <dimen name="shop_product_price_text_size">14sp</dimen>
+    <dimen name="shop_product_extra_text_size">14sp</dimen>
+    <!-- Shopping Basket Item Layout End -->
+
+    <!-- Popup update User Layout -->
+    <dimen name="popup_user_padding">15dp</dimen>
+    <dimen name="popup_user_width">400dp</dimen>
+    <dimen name="popup_user_height">400dp</dimen>
+    <dimen name="popup_close_button_size">40dp</dimen>
+    <dimen name="popup_user_data_title_text_size">20sp</dimen>
+    <dimen name="popup_user_data_title_margin_top">16dp</dimen>
+    <dimen name="popup_firstname_input_layout_margin_top">20dp</dimen>
+    <dimen name="popup_input_layout_margin_top">16dp</dimen>
+    <!-- Popup update User Layout End -->
+
+</resources>

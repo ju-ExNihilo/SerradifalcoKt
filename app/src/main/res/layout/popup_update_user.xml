@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_gravity="center"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_gravity="center"
         android:padding="@dimen/popup_user_padding"
         android:background="@color/colorPrimary"
         android:layout_width="@dimen/popup_user_width"
@@ -28,83 +28,101 @@
             android:textSize="@dimen/popup_user_data_title_text_size"
             android:layout_marginTop="@dimen/popup_user_data_title_margin_top"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/popup_firstname_input_layout"
+    <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/popup_user_data_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/popup_firstname_input_layout_margin_top"
-            app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
-            app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
-            app:boxCornerRadiusTopStart="@dimen/add_corner_radius"
-            app:boxCornerRadiusBottomStart="@dimen/add_corner_radius">
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+    >
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/popup_firstname_edit_text"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/prenom" />
+                android:layout_height="match_parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/popup_firstname_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/popup_firstname_input_layout_margin_top"
+                    app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
+                    app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
+                    app:boxCornerRadiusTopStart="@dimen/add_corner_radius"
+                    app:boxCornerRadiusBottomStart="@dimen/add_corner_radius">
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/popup_lastname_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/popup_firstname_input_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/popup_input_layout_margin_top"
-            app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
-            app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
-            app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
-            app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/popup_firstname_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prenom"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/popup_lastname_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nom" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/popup_lastname_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/popup_firstname_input_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/popup_input_layout_margin_top"
+                    app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
+                    app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
+                    app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
+                    app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/popup_phone_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/popup_lastname_input_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/popup_input_layout_margin_top"
-            app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
-            app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
-            app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
-            app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/popup_lastname_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nom"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/popup_phone_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/phone"
-                android:inputType="phone"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/popup_phone_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/popup_lastname_input_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/popup_input_layout_margin_top"
+                    app:boxCornerRadiusBottomEnd="@dimen/add_corner_radius"
+                    app:boxCornerRadiusBottomStart="@dimen/add_corner_radius"
+                    app:boxCornerRadiusTopEnd="@dimen/add_corner_radius"
+                    app:boxCornerRadiusTopStart="@dimen/add_corner_radius">
 
-    <Button
-            android:id="@+id/popup_validate_button"
-            android:text="@string/confirmer"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/add_button_height"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="@dimen/add_button_horizontal_margin"
-            android:layout_marginTop="@dimen/add_button_top_margin"
-            android:layout_marginEnd="@dimen/add_button_horizontal_margin"
-            android:backgroundTint="@color/colorAccent"
-            android:textSize="@dimen/add_button_text_size"
-            app:cornerRadius="@dimen/add_corner_radius"/>
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/popup_phone_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/phone"
+                        android:inputType="phone"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                    android:id="@+id/popup_validate_button"
+                    android:text="@string/confirmer"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_button_height"
+                    app:layout_constraintTop_toBottomOf="@+id/popup_phone_input_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="@dimen/add_button_horizontal_margin"
+                    android:layout_marginTop="@dimen/add_button_top_margin"
+                    android:layout_marginEnd="@dimen/add_button_horizontal_margin"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textSize="@dimen/add_button_text_size"
+                    app:cornerRadius="@dimen/add_corner_radius" android:layout_marginBottom="24dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

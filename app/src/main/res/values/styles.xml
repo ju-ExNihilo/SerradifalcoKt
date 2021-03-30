@@ -84,10 +84,12 @@
 
     <style name="mySpinnerItemStyle" >
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/add_input_text_size</item>
     </style>
 
     <style name="mySpinnerItemStyle2" >
         <item name="android:textColor">@color/colorGray2</item>
+        <item name="android:textSize">@dimen/add_input_text_size</item>
     </style>
 
 </resources>

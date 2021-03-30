@@ -48,6 +48,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/details_item_name"
             app:layout_constraintEnd_toStartOf="@+id/details_item_price"
             android:textColor="@color/colorWhite"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             android:textSize="@dimen/details_item_text_size"
             android:layout_marginEnd="@dimen/details_item_default_margin_end"/>
 

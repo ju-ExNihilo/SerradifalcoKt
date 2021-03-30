@@ -83,20 +83,40 @@
                 <ImageView
                         android:id="@+id/add_address_default_card_name_image"
                         android:src="@drawable/logo6"
-                        android:layout_width="@dimen/default_card_name_image_width"
-                        android:layout_height="@dimen/default_card_name_image_height"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         app:layout_constraintTop_toTopOf="@+id/add_address_default_card_pizza_image"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="@dimen/default_card_name_image_margin_top"/>
+                        app:layout_constraintStart_toEndOf="@+id/view5"
+                        android:layout_marginStart="@dimen/menu_logo_image_margin"
+                        app:layout_constraintBottom_toBottomOf="@+id/add_address_default_card_pizza_image"/>
+
+                <View
+                        android:id="@+id/view4"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/add_address_default_card_pizza_image"/>
+
+                <View
+                        android:id="@+id/view5"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintEnd_toEndOf="@+id/view4"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/add_address_default_card_pizza_image"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
                 <TextView
                         android:id="@+id/add_address_title"
                         android:text="@string/ajouter_une_adresse"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@+id/add_address_default_card_name_image"
+                        app:layout_constraintTop_toBottomOf="@+id/add_address_default_card_pizza_image"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="@dimen/add_title_margin_start"
-                        android:layout_marginTop="@dimen/add_title_margin_top"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/add_title_text_size"
                         android:background="@drawable/underline_small_white"/>
@@ -121,6 +141,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/numero_de_voie"
+                            android:textSize="@dimen/add_input_text_size"
                             android:backgroundTint="@color/colorWhite"
                             android:inputType="number"/>
 
@@ -146,6 +167,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/voie"
+                            android:textSize="@dimen/add_input_text_size"
                             android:backgroundTint="@color/colorWhite" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -193,6 +215,7 @@
                             android:id="@+id/additional_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/add_input_text_size"
                             android:hint="@string/complement_d_adresse"
                             android:backgroundTint="@color/colorWhite"/>
 

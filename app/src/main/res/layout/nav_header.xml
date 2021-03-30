@@ -21,7 +21,7 @@
 
         <ImageView
                 android:id="@+id/nav_header_card_view_family_image"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/home_family"
                 android:scaleType="fitXY"/>

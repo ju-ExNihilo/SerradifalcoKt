@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default Card -->
+    <dimen name="default_card_margin_top">20dp</dimen>
+    <dimen name="default_card_name_image_margin_top">20dp</dimen>
+    <dimen name="default_card_pizza_image_height">200dp</dimen>
+    <dimen name="default_card_name_image_height">200dp</dimen>
+    <!-- Default Card End -->
+
+    <!-- Add Address / User Layout -->
+    <dimen name="add_title_text_size">18sp</dimen>
+    <dimen name="add_button_text_size">14sp</dimen>
+    <dimen name="add_input_text_size">14sp</dimen>
+    <!-- Add Address / User Layout End -->
+
+</resources>

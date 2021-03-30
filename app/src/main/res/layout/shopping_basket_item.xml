@@ -30,6 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/shop_item_default_margin"
             android:text="@string/taille"
+            android:textSize="@dimen/shop_product_size_text_size"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"/>
 
@@ -56,6 +57,7 @@
             app:layout_constraintEnd_toStartOf="@+id/shop_product_price"
             android:layout_marginEnd="@dimen/shop_item_default_margin"
             android:text="@string/prix"
+            android:textSize="@dimen/shop_product_size_text_size"
             android:textStyle="bold"/>
 
     <ImageButton
@@ -65,10 +67,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shop_product_price"
-            android:layout_marginEnd="@dimen/shop_item_default_margin"
+            android:layout_marginEnd="@dimen/shop_item_delete_button_margin"
             app:srcCompat="@drawable/ic_delete"
             android:background="@color/colorTransparent"
-            android:scaleType="centerInside"/>
+            android:scaleType="fitCenter"/>
 
     <TextView
             android:id="@+id/shop_product_quantity_title"
@@ -81,7 +83,7 @@
             android:text="@string/quantit"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
-            android:textSize="@dimen/shop_product_quantity_title_text_size"/>
+            android:textSize="@dimen/shop_product_size_text_size"/>
 
     <TextView
             android:id="@+id/shop_product_price"
@@ -106,6 +108,7 @@
             app:layout_constraintTop_toTopOf="@+id/shop_product_extra"
             android:layout_marginTop="@dimen/shop_product_extra_title_margin_top"
             android:layout_marginStart="@dimen/shop_item_default_margin"
+            android:textSize="@dimen/shop_product_size_text_size"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"/>
 

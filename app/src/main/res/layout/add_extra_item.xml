@@ -20,6 +20,8 @@
             android:textSize="@dimen/details_item_text_size"
             android:textColor="@color/colorGreen"
             android:textStyle="bold"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             android:layout_marginStart="@dimen/details_item_name_margin_start"/>
 
     <TextView

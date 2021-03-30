@@ -8,6 +8,7 @@
     <dimen name="default_card_name_image_width">263dp</dimen>
     <dimen name="default_card_name_image_height">204dp</dimen>
     <dimen name="default_card_name_image_margin_top">40dp</dimen>
+    <dimen name="default_card_name_image_margin_start">0dp</dimen>
     <dimen name="default_card_min_height">730dp</dimen>
     <!-- Default Card End -->
 
@@ -19,6 +20,7 @@
     <!-- Login Layout -->
     <dimen name="login_button_height">60dp</dimen>
     <dimen name="login_name_image_height">150dp</dimen>
+    <dimen name="login_image_height">250dp</dimen>
     <dimen name="login_name_image_margin">24dp</dimen>
     <dimen name="login_name_image_margin_top">230dp</dimen>
     <dimen name="login_title_text_size">30sp</dimen>
@@ -26,6 +28,7 @@
     <dimen name="login_title_margin">16dp</dimen>
     <dimen name="login_button_margin">24dp</dimen>
     <dimen name="login_button_radius">20dp</dimen>
+    <dimen name="login_button_text_size">20sp</dimen>
     <dimen name="login_google_button_margin_top">100dp</dimen>
     <!-- Login Layout End -->
 
@@ -41,6 +44,7 @@
     <dimen name="home_pizza_day_card_radius">15dp</dimen>
     <dimen name="home_pizza_day_card_margin">8dp</dimen>
     <dimen name="home_pizza_day_name_text_size">36sp</dimen>
+    <dimen name="home_pizza_day_name_margin_top">60dp</dimen>
     <dimen name="home_pizza_day_name_margin">16dp</dimen>
     <dimen name="home_pizza_day_rotation">-20</dimen>
     <dimen name="home_pizza_day_component_margin">32dp</dimen>
@@ -69,6 +73,11 @@
     <dimen name="typed_text_margin_top">16dp</dimen>
     <dimen name="typed_text_margin_bottom">75dp</dimen>
     <!-- Pizzeria Layout End -->
+
+    <!-- Map Layout -->
+    <dimen name="map_button_text_size">14sp</dimen>
+    <dimen name="map_button_margin">8dp</dimen>
+    <!-- Map Layout End -->
 
     <!-- Details Item Layout -->
     <dimen name="spinner_margin_start">8dp</dimen>
@@ -100,6 +109,7 @@
     <dimen name="details_add_button_corner_radius">15dp</dimen>
     <dimen name="details_quantity_title_text_size">14sp</dimen>
     <dimen name="details_quantity_title_margin_end">16dp</dimen>
+    <dimen name="details_radio_button_text_size">14sp</dimen>
     <!-- Details Layout End -->
 
     <!-- Menu Layout -->
@@ -112,6 +122,7 @@
     <dimen name="menu_item_default_margin">8dp</dimen>
     <dimen name="menu_item_text_size">16sp</dimen>
     <dimen name="menu_item_large_margin_start">16dp</dimen>
+    <dimen name="menu_logo_image_margin">40dp</dimen>
     <!-- Menu Layout End -->
 
     <!-- Add Address / User Layout -->
@@ -125,6 +136,7 @@
     <dimen name="add_button_horizontal_margin">32dp</dimen>
     <dimen name="add_button_top_margin">24dp</dimen>
     <dimen name="add_button_text_size">18sp</dimen>
+    <dimen name="add_input_text_size">16sp</dimen>
     <dimen name="add_error_margin_top">3dp</dimen>
     <!-- Add Address / User Layout End -->
 
@@ -147,6 +159,7 @@
     <dimen name="account_field_text_size">18sp</dimen>
     <dimen name="account_image_button_width">40dp</dimen>
     <dimen name="account_user_address_title_margin_top">24dp</dimen>
+    <dimen name="account_image_margin">32dp</dimen>
     <!-- Account Layout End -->
 
     <!-- Address Item Layout -->
@@ -159,6 +172,8 @@
     <!-- Shopping Basket Layout -->
     <dimen name="shopping_basket_total_price_text_size">18sp</dimen>
     <dimen name="shopping_basket_default_margin">8dp</dimen>
+    <dimen name="shopping_basket_recycler_horizontal_margin">8dp</dimen>
+    <dimen name="shopping_basket_view_margin">24dp</dimen>
     <!-- Shopping Basket Layout End -->
 
     <!-- Shopping Basket Item Layout -->
@@ -166,6 +181,7 @@
     <dimen name="shop_item_name_horizontal_margin">8dp</dimen>
     <dimen name="shop_item_name_text_size">20sp</dimen>
     <dimen name="shop_item_default_margin">8dp</dimen>
+    <dimen name="shop_item_delete_button_margin">8dp</dimen>
     <dimen name="shop_product_size_text_size">14sp</dimen>
     <dimen name="shop_product_delete_button_width">40dp</dimen>
     <dimen name="shop_product_quantity_title_text_size">14sp</dimen>
